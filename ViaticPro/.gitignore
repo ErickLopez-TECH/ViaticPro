@@ -1,0 +1,6 @@
+# NetBeans & compilados
+build/ dist/ nbproject/private/ nbproject/project.private.properties nbproject/project.private.xml nbproject/private-build.properties *.class *.jar
+# Archivos de sistema y entorno
+.DS_Store
+Thumbs.db
+
