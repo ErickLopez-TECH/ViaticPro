@@ -62,6 +62,7 @@ public class PnlViaticos extends javax.swing.JPanel {
         txtMonto = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblViaticos = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(630, 670));
         setPreferredSize(new java.awt.Dimension(630, 670));
@@ -136,6 +137,9 @@ public class PnlViaticos extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tblViaticos);
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -170,19 +174,25 @@ public class PnlViaticos extends javax.swing.JPanel {
                 .addGap(130, 130, 130))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(36, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblTitulo)
-                        .addGap(196, 196, 196))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37))))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTitulo)
+                .addGap(196, 196, 196))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(lblTitulo)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(lblTitulo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jButton1)))
                 .addGap(85, 85, 85)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -248,6 +258,7 @@ public class PnlViaticos extends javax.swing.JPanel {
         
         //le dice que si el indice es = -1 esto quiere decir que debeb de garega pero de lo contarrio e sporque existe
         int indice = viaticosMetodos.buscarviatico(id);
+        String nombreUser = "";
         if(indice ==-1){
             
             //validacion de campoos antes d eguardar
@@ -260,19 +271,20 @@ public class PnlViaticos extends javax.swing.JPanel {
             
             
             movimiento = "Agrego el viatico "+ nombre;
-            
+            nombreUser = "Erick";
             
         }else{
             
             movimiento = "edito el viatico "+ nombre;
+            nombreUser = "Juan";
             almacen.editarViatico(indice, miViatico);
         }
         
         int idBitacora = metodosBita.siguienteBitacora();
         
-        ObjBitacora miBitacora = new ObjBitacora(idBitacora, PnlViaticos.nombre, seccion, movimiento);
+        ObjBitacora miBitacora = new ObjBitacora(idBitacora, nombreUser, seccion, movimiento);
         almacenBitacora.agregarBitacora(miBitacora);
-        almacenBitacora.mostrarBitacoraConsola();
+        
         
         tblViaticos.setModel(almacen.mostrarViaticos());
     }//GEN-LAST:event_btnGuardarActionPerformed
@@ -351,6 +363,10 @@ public class PnlViaticos extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_cmbEstadoKeyPressed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     
     
 
@@ -359,6 +375,7 @@ public class PnlViaticos extends javax.swing.JPanel {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> cmbEstado;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblId;
