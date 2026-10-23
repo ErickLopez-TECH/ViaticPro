@@ -4,12 +4,18 @@
  */
 package Presentacion;
 
+import Datos.ObjUsuario;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+import Datos.EstructuraUsuarios;
+import Logica.MetodosUsuarios;
+
 /**
  *
  * @author triamus
  */
 public class FrmLogin extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmLogin.class.getName());
 
     /**
@@ -18,6 +24,9 @@ public class FrmLogin extends javax.swing.JFrame {
     public FrmLogin() {
         initComponents();
     }
+
+    EstructuraUsuarios almacen = new EstructuraUsuarios();
+    MetodosUsuarios misMetodos = new MetodosUsuarios();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,21 +37,91 @@ public class FrmLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        lblTitulo = new javax.swing.JLabel();
+        lblUsuario = new javax.swing.JLabel();
+        lblClave = new javax.swing.JLabel();
+        txtUsuario = new javax.swing.JTextField();
+        txtClave = new javax.swing.JPasswordField();
+        lblImgUsr = new javax.swing.JLabel();
+        btnOk = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
+        lblFondo = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setForeground(new java.awt.Color(102, 204, 255));
+        setMinimumSize(new java.awt.Dimension(400, 550));
+        setPreferredSize(new java.awt.Dimension(400, 550));
+        setSize(new java.awt.Dimension(400, 550));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("VIATIC PRO");
+        getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 155, 35));
+
+        lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsuario.setText("Nombre de Usuario:");
+        getContentPane().add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+
+        lblClave.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblClave.setForeground(new java.awt.Color(255, 255, 255));
+        lblClave.setText("Contraseña:");
+        getContentPane().add(lblClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 95, -1));
+
+        txtUsuario.setBackground(new java.awt.Color(204, 204, 204));
+        txtUsuario.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 340, 30));
+
+        txtClave.setBackground(new java.awt.Color(204, 204, 204));
+        txtClave.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtClave.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtClaveKeyPressed(evt);
+            }
+        });
+        getContentPane().add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 340, 30));
+
+        lblImgUsr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/emblem-people.png"))); // NOI18N
+        getContentPane().add(lblImgUsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 116, 127));
+
+        btnOk.setBackground(new java.awt.Color(204, 204, 204));
+        btnOk.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnOk.setForeground(new java.awt.Color(51, 51, 51));
+        btnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ingresar24.png"))); // NOI18N
+        btnOk.setText("Ingresar");
+        btnOk.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOkActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 120, 40));
+
+        btnSalir.setBackground(new java.awt.Color(204, 204, 204));
+        btnSalir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(51, 51, 51));
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salir24.png"))); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 120, 40));
+
+        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoLisoTurquesa.png"))); // NOI18N
+        lblFondo.setText(".");
+        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOkActionPerformed
+
+    private void txtClaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtClaveKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtClaveKeyPressed
 
     /**
      * @param args the command line arguments
@@ -70,5 +149,14 @@ public class FrmLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnOk;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JLabel lblClave;
+    private javax.swing.JLabel lblFondo;
+    private javax.swing.JLabel lblImgUsr;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblUsuario;
+    private javax.swing.JPasswordField txtClave;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

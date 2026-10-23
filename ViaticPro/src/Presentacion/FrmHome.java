@@ -51,12 +51,11 @@ public class FrmHome extends javax.swing.JFrame {
         btnRepMovimientos = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        lblUusario = new javax.swing.JLabel();
+        lblUsuario = new javax.swing.JLabel();
         pnlContenido = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ViaticPro");
-        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setSize(new java.awt.Dimension(800, 600));
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -72,56 +71,99 @@ public class FrmHome extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 255, 204));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Menu Principal");
+        jLabel3.setText("Menú Principal");
 
         btnEmpleados.setBackground(new java.awt.Color(153, 255, 204));
         btnEmpleados.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnEmpleados.setText("Empleados");
-        btnEmpleados.addActionListener(this::btnEmpleadosActionPerformed);
+        btnEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmpleadosActionPerformed(evt);
+            }
+        });
 
         btnViaticos.setBackground(new java.awt.Color(153, 255, 204));
         btnViaticos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnViaticos.setText("Viaticos");
-        btnViaticos.addActionListener(this::btnViaticosActionPerformed);
+        btnViaticos.setText("Viáticos");
+        btnViaticos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViaticosActionPerformed(evt);
+            }
+        });
 
         btnLiquidacion.setBackground(new java.awt.Color(153, 255, 204));
         btnLiquidacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnLiquidacion.setText("Liquidacion");
-        btnLiquidacion.addActionListener(this::btnLiquidacionActionPerformed);
+        btnLiquidacion.setText("Liquidación");
+        btnLiquidacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLiquidacionActionPerformed(evt);
+            }
+        });
 
         btnUsuarios.setBackground(new java.awt.Color(153, 255, 204));
         btnUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnUsuarios.setText("Usuarios");
-        btnUsuarios.addActionListener(this::btnUsuariosActionPerformed);
+        btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuariosActionPerformed(evt);
+            }
+        });
 
         btnCargaDatos.setBackground(new java.awt.Color(153, 255, 204));
         btnCargaDatos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnCargaDatos.setText("Cargar Datos");
-        btnCargaDatos.addActionListener(this::btnCargaDatosActionPerformed);
+        btnCargaDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargaDatosActionPerformed(evt);
+            }
+        });
 
         btnReportes.setBackground(new java.awt.Color(153, 255, 204));
         btnReportes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnReportes.setText("Reportes");
-        btnReportes.addActionListener(this::btnReportesActionPerformed);
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesActionPerformed(evt);
+            }
+        });
 
         btnSalir.setBackground(new java.awt.Color(153, 255, 204));
         btnSalir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSalir.setText("Cerrar sesión");
-        btnSalir.addActionListener(this::btnSalirActionPerformed);
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
-        pnlSubReportes.setBackground(new java.awt.Color(0, 204, 204));
+        pnlSubReportes.setBackground(new java.awt.Color(114, 214, 199));
 
+        btnRepViaticosFecha.setBackground(new java.awt.Color(227, 255, 243));
         btnRepViaticosFecha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnRepViaticosFecha.setText("Viáticos x Fecha");
-        btnRepViaticosFecha.addActionListener(this::btnRepViaticosFechaActionPerformed);
+        btnRepViaticosFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRepViaticosFechaActionPerformed(evt);
+            }
+        });
 
+        btnRepViaticosEmp.setBackground(new java.awt.Color(227, 255, 243));
         btnRepViaticosEmp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnRepViaticosEmp.setText("Viáticos x Empl");
-        btnRepViaticosEmp.addActionListener(this::btnRepViaticosEmpActionPerformed);
+        btnRepViaticosEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRepViaticosEmpActionPerformed(evt);
+            }
+        });
 
+        btnRepMovimientos.setBackground(new java.awt.Color(227, 255, 243));
         btnRepMovimientos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnRepMovimientos.setText("Movimientos");
-        btnRepMovimientos.addActionListener(this::btnRepMovimientosActionPerformed);
+        btnRepMovimientos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRepMovimientosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlSubReportesLayout = new javax.swing.GroupLayout(pnlSubReportes);
         pnlSubReportes.setLayout(pnlSubReportesLayout);
@@ -199,19 +241,19 @@ public class FrmHome extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Viatic Pro");
 
-        lblUusario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblUusario.setForeground(new java.awt.Color(204, 255, 204));
-        lblUusario.setText("Usuario:");
+        lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(204, 255, 204));
+        lblUsuario.setText("Usuario:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
-                .addComponent(lblUusario, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
+                .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -219,12 +261,12 @@ public class FrmHome extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUusario)
+                    .addComponent(lblUsuario)
                     .addComponent(jLabel1))
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 680, 60));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 660, 60));
 
         pnlContenido.setBackground(new java.awt.Color(204, 204, 204));
         pnlContenido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -340,7 +382,7 @@ public class FrmHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblUusario;
+    private javax.swing.JLabel lblUsuario;
     private javax.swing.JPanel pnlContenido;
     private javax.swing.JPanel pnlSubReportes;
     // End of variables declaration//GEN-END:variables
