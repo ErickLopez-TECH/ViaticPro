@@ -52,6 +52,11 @@ public class FrmLogin extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(400, 550));
         setPreferredSize(new java.awt.Dimension(400, 550));
         setSize(new java.awt.Dimension(400, 550));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -71,6 +76,16 @@ public class FrmLogin extends javax.swing.JFrame {
 
         txtUsuario.setBackground(new java.awt.Color(204, 204, 204));
         txtUsuario.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUsuarioActionPerformed(evt);
+            }
+        });
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 340, 30));
 
         txtClave.setBackground(new java.awt.Color(204, 204, 204));
@@ -104,6 +119,11 @@ public class FrmLogin extends javax.swing.JFrame {
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salir24.png"))); // NOI18N
         btnSalir.setText("Salir");
         btnSalir.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 120, 40));
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoLisoTurquesa.png"))); // NOI18N
@@ -116,12 +136,83 @@ public class FrmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
-        // TODO add your handling code here:
+
+        //--Capturar los valores que el usuario digitó
+        String usuario = txtUsuario.getText();
+        //-- extracción de la clave del campo passwordfield
+        String clave = new String(txtClave.getPassword());
+
+        //--Comparar y validar lo digitado contra mis credenciales
+        if (usuario.equals("") || clave.equals("")) {
+            JOptionPane.showMessageDialog(null, "Datos Incompletos",
+                    "Aviso Importante", JOptionPane.WARNING_MESSAGE);
+        } else if (misMetodos.buscarUsuario(usuario, clave) != -1) {
+            //--Se toma el usuario encontrado para revisar su estado
+            ObjUsuario miUsuario = almacen.listarUsuarios().get(misMetodos.buscarUsuario(usuario, clave));
+            if (miUsuario.getEstado() == 1) { //-- 1 Activo
+                FrmHome prc = new FrmHome(miUsuario);
+                prc.setLocationRelativeTo(null);
+                prc.setVisible(true);
+
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario Inactivo",
+                        "Aviso Importante", JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Datos Incorrectos",
+                    "Aviso Importante", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnOkActionPerformed
 
     private void txtClaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtClaveKeyPressed
-        // TODO add your handling code here:
+        //--Al presionar Enter en la clave, ejecuta el botón Ingresar
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnOk.doClick();
+        }
     }//GEN-LAST:event_txtClaveKeyPressed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+        //-- Precarga de usuarios (si la lista está vacía, para no duplicar al cerrar)
+        if (almacen.listarUsuarios().size() == 0) {
+            ObjUsuario miUsuario = new ObjUsuario();
+            miUsuario.setId(misMetodos.siguienteUsuario());
+            miUsuario.setIdentificacion("3101000001");
+            miUsuario.setNombreCompleto("Administrador ViaticPro");
+            miUsuario.setNomUsuario("viaticpro");
+            miUsuario.setClave("viatic123");
+            miUsuario.setRol(0);      //-- 0 Administrador
+            miUsuario.setEstado(1);   //-- 1 Activo
+            almacen.agregarUsuario(miUsuario);
+
+            ObjUsuario miUsuario2 = new ObjUsuario();
+            miUsuario2.setId(misMetodos.siguienteUsuario());
+            miUsuario2.setIdentificacion("2222");
+            miUsuario2.setNombreCompleto("Usuario Normal");
+            miUsuario2.setNomUsuario("usuario");
+            miUsuario2.setClave("1234");
+            miUsuario2.setRol(1);     //-- 1 Normal
+            miUsuario2.setEstado(1);  //-- 1 Activo
+            almacen.agregarUsuario(miUsuario2);
+        }
+
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void txtUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyPressed
+        //--Al presionar Enter en el usuario, pasa el cursor a la clave
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            txtClave.requestFocus();
+        }
+    }//GEN-LAST:event_txtUsuarioKeyPressed
+
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,7 +236,11 @@ public class FrmLogin extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FrmLogin().setVisible(true));
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new FrmLogin().setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

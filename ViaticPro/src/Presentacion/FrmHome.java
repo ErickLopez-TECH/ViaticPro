@@ -49,6 +49,7 @@ public class FrmHome extends javax.swing.JFrame {
         btnRepViaticosFecha = new javax.swing.JButton();
         btnRepViaticosEmp = new javax.swing.JButton();
         btnRepMovimientos = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
@@ -85,20 +86,12 @@ public class FrmHome extends javax.swing.JFrame {
         btnViaticos.setBackground(new java.awt.Color(153, 255, 204));
         btnViaticos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnViaticos.setText("Viáticos");
-        btnViaticos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViaticosActionPerformed(evt);
-            }
-        });
+        btnViaticos.addActionListener(this::btnViaticosActionPerformed);
 
         btnLiquidacion.setBackground(new java.awt.Color(153, 255, 204));
         btnLiquidacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnLiquidacion.setText("Liquidación");
-        btnLiquidacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLiquidacionActionPerformed(evt);
-            }
-        });
+        btnLiquidacion.addActionListener(this::btnLiquidacionActionPerformed);
 
         btnUsuarios.setBackground(new java.awt.Color(153, 255, 204));
         btnUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -127,7 +120,7 @@ public class FrmHome extends javax.swing.JFrame {
             }
         });
 
-        btnSalir.setBackground(new java.awt.Color(153, 255, 204));
+        btnSalir.setBackground(new java.awt.Color(255, 102, 102));
         btnSalir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSalir.setText("Cerrar sesión");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +166,7 @@ public class FrmHome extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlSubReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRepViaticosEmp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRepViaticosFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRepViaticosFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                     .addComponent(btnRepMovimientos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -189,10 +182,14 @@ public class FrmHome extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/presupuesto (1).png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,14 +200,19 @@ public class FrmHome extends javax.swing.JFrame {
                     .addComponent(btnLiquidacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCargaDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlSubReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pnlSubReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)))
                 .addContainerGap())
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(123, 123, 123)
+                .addGap(22, 22, 22)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -226,12 +228,12 @@ public class FrmHome extends javax.swing.JFrame {
                 .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlSubReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 600));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 600));
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 102));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 3, true));
@@ -250,9 +252,9 @@ public class FrmHome extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
                 .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -270,7 +272,7 @@ public class FrmHome extends javax.swing.JFrame {
 
         pnlContenido.setBackground(new java.awt.Color(204, 204, 204));
         pnlContenido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(pnlContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 650, 540));
+        getContentPane().add(pnlContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 640, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -289,8 +291,7 @@ public class FrmHome extends javax.swing.JFrame {
     private void btnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadosActionPerformed
         // TODO add your handling code here:
         pnlSubReportes.setVisible(false);
-        // mostrarPanel(new PnlEmpleados(usuarioActual)); // se activa cuando exista PnlEmpleados
-        JOptionPane.showMessageDialog(null, "Módulo en construcción");
+        mostrarPanel(new PnlEmpleados(usuarioActual));
     }//GEN-LAST:event_btnEmpleadosActionPerformed
 
     private void btnViaticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViaticosActionPerformed
@@ -357,11 +358,8 @@ public class FrmHome extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void mostrarPanel(javax.swing.JPanel panel){
-        panel.setSize(650,540);
-        panel.setLocation(0,0);
-
         pnlContenido.removeAll();
-        pnlContenido.add(panel);
+        pnlContenido.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 540));
         pnlContenido.revalidate();
         pnlContenido.repaint();
     }
@@ -379,6 +377,7 @@ public class FrmHome extends javax.swing.JFrame {
     private javax.swing.JButton btnUsuarios;
     private javax.swing.JButton btnViaticos;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
