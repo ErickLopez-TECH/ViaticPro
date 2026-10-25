@@ -106,7 +106,7 @@ public class PnlEmpleados extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(184, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(179, 179, 179))
         );
@@ -123,10 +123,14 @@ public class PnlEmpleados extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Identificación:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
-        add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 90, 80, -1));
+        add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 80, -1));
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
-        btnBuscar.addActionListener(this::btnBuscarActionPerformed);
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
         add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 90, 40, 40));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -171,7 +175,11 @@ public class PnlEmpleados extends javax.swing.JPanel {
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lista-de-verificacion.png"))); // NOI18N
         btnGuardar.setText("  Guardar");
         btnGuardar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnGuardar.addActionListener(this::btnGuardarActionPerformed);
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
         add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 140, 37));
 
         btnBorrar.setBackground(new java.awt.Color(255, 153, 153));
@@ -179,7 +187,11 @@ public class PnlEmpleados extends javax.swing.JPanel {
         btnBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton-eliminar.png"))); // NOI18N
         btnBorrar.setText("  Borrar");
         btnBorrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnBorrar.addActionListener(this::btnBorrarActionPerformed);
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
         add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 140, 37));
 
         btnLimpiar.setBackground(new java.awt.Color(204, 204, 255));
@@ -187,7 +199,11 @@ public class PnlEmpleados extends javax.swing.JPanel {
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/borrador.png"))); // NOI18N
         btnLimpiar.setText("  Limpiar");
         btnLimpiar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnLimpiar.addActionListener(this::btnLimpiarActionPerformed);
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
         add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 140, 38));
 
         tblEmpleados.setModel(new javax.swing.table.DefaultTableModel(

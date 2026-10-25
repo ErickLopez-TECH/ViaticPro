@@ -57,7 +57,6 @@ public class FrmHome extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ViaticPro");
-        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setSize(new java.awt.Dimension(800, 600));
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -78,7 +77,11 @@ public class FrmHome extends javax.swing.JFrame {
         btnEmpleados.setBackground(new java.awt.Color(153, 255, 204));
         btnEmpleados.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnEmpleados.setText("Empleados");
-        btnEmpleados.addActionListener(this::btnEmpleadosActionPerformed);
+        btnEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmpleadosActionPerformed(evt);
+            }
+        });
 
         btnViaticos.setBackground(new java.awt.Color(153, 255, 204));
         btnViaticos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -93,39 +96,67 @@ public class FrmHome extends javax.swing.JFrame {
         btnUsuarios.setBackground(new java.awt.Color(153, 255, 204));
         btnUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnUsuarios.setText("Usuarios");
-        btnUsuarios.addActionListener(this::btnUsuariosActionPerformed);
+        btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuariosActionPerformed(evt);
+            }
+        });
 
         btnCargaDatos.setBackground(new java.awt.Color(153, 255, 204));
         btnCargaDatos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnCargaDatos.setText("Cargar Datos");
-        btnCargaDatos.addActionListener(this::btnCargaDatosActionPerformed);
+        btnCargaDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargaDatosActionPerformed(evt);
+            }
+        });
 
         btnReportes.setBackground(new java.awt.Color(153, 255, 204));
         btnReportes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnReportes.setText("Reportes");
-        btnReportes.addActionListener(this::btnReportesActionPerformed);
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesActionPerformed(evt);
+            }
+        });
 
         btnSalir.setBackground(new java.awt.Color(255, 102, 102));
         btnSalir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSalir.setText("Cerrar sesión");
-        btnSalir.addActionListener(this::btnSalirActionPerformed);
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         pnlSubReportes.setBackground(new java.awt.Color(114, 214, 199));
 
         btnRepViaticosFecha.setBackground(new java.awt.Color(227, 255, 243));
         btnRepViaticosFecha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnRepViaticosFecha.setText("Viáticos x Fecha");
-        btnRepViaticosFecha.addActionListener(this::btnRepViaticosFechaActionPerformed);
+        btnRepViaticosFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRepViaticosFechaActionPerformed(evt);
+            }
+        });
 
         btnRepViaticosEmp.setBackground(new java.awt.Color(227, 255, 243));
         btnRepViaticosEmp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnRepViaticosEmp.setText("Viáticos x Empl");
-        btnRepViaticosEmp.addActionListener(this::btnRepViaticosEmpActionPerformed);
+        btnRepViaticosEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRepViaticosEmpActionPerformed(evt);
+            }
+        });
 
         btnRepMovimientos.setBackground(new java.awt.Color(227, 255, 243));
         btnRepMovimientos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnRepMovimientos.setText("Movimientos");
-        btnRepMovimientos.addActionListener(this::btnRepMovimientosActionPerformed);
+        btnRepMovimientos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRepMovimientosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlSubReportesLayout = new javax.swing.GroupLayout(pnlSubReportes);
         pnlSubReportes.setLayout(pnlSubReportesLayout);

@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
  * @author triamus
  */
 public class Estructuras {
+
     //ArrayLists para almacenamiento
     static ArrayList<ObjEmpleado> listaEmpleados = new ArrayList<>();
     // (Aquí cada compañero agrega su lista, por ejemplo: listaUsuarios)
@@ -23,33 +24,33 @@ public class Estructuras {
     //------------------------------------------Métodos de Trabajo (CRUD)------------------------------------------//
     //-----------------Para Empleados-----------------
     //Insertar
-    public void agregarEmpleado(ObjEmpleado miEmpleado){
+    public void agregarEmpleado(ObjEmpleado miEmpleado) {
         listaEmpleados.add(miEmpleado);
     }
 
     //Modificar
-    public void editarEmpleado(int indice, ObjEmpleado miEmpleado){
+    public void editarEmpleado(int indice, ObjEmpleado miEmpleado) {
         listaEmpleados.set(indice, miEmpleado);
     }
 
     //Borrar
-    public void quitarEmpleado(int indice){
+    public void quitarEmpleado(int indice) {
         listaEmpleados.remove(indice);
     }
 
     //Mostrar (la lista)
-    public ArrayList<ObjEmpleado> listarEmpleados(){
+    public ArrayList<ObjEmpleado> listarEmpleados() {
         return new ArrayList<>(listaEmpleados);
     }
 
-    public DefaultTableModel mostrarEmpleados(){
+    public DefaultTableModel mostrarEmpleados() {
         String[] titulos = {"ID", "Cédula", "Nombre", "Apellido 1", "Apellido 2", "Teléfono", "Dirección", "Estado"};
 
         DefaultTableModel modelo = new DefaultTableModel(titulos, 0);
 
-        for (int i = 0; i < listaEmpleados.size(); i++){
+        for (int i = 0; i < listaEmpleados.size(); i++) {
             String estado = "Inactivo";
-            if (listaEmpleados.get(i).getEstado() == 1){
+            if (listaEmpleados.get(i).getEstado() == 1) {
                 estado = "Activo";
             }
 
@@ -68,6 +69,5 @@ public class Estructuras {
         return modelo;
     }
 
-    //-----------------Para Usuarios, Viáticos, etc.-----------------
-    // (puse esto para que cada uno pueda poner aquí su sección, siguiendo el mismo patrón)
+    
 }

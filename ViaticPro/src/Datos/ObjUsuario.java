@@ -6,40 +6,32 @@ package Datos;
 
 /**
  *
- * @author jdavi
+ * @author alvar
  */
 public class ObjUsuario {
+
     private int id;
-    private String cedula;
-    private String nombre;
-    private String aprellidos;
-    private String direccion;
-    private String telefono;
-    private String correo;
+    private String identificacion;
+    private String nombreCompleto;
     private String nomUsuario;
     private String clave;
-    private int rol; // 0:Admin | 1:Mesero | 2:Cocina | 3:Otro
-    private int estado; // 0:Inactivo | 1:Activo
+    private int rol;    //--0 Administrador, 1 Normal
+    private int estado; //-- 0 Inactivo 1 Activo
 
-    //---------------------------Constructores---------------------------//
     public ObjUsuario() {
     }
 
-    public ObjUsuario(int id, String cedula, String nombre, String aprellidos, String direccion, String telefono, String correo, String nomUsuario, String clave, int rol, int estado) {
+    public ObjUsuario(int id, String identificacion, String nombreCompleto,
+            String nomUsuario, String clave, int rol, int estado) {
         this.id = id;
-        this.cedula     = cedula;
-        this.nombre     = nombre;
-        this.aprellidos = aprellidos;
-        this.direccion  = direccion;
-        this.telefono   = telefono;
-        this.correo     = correo;
+        this.identificacion = identificacion;
+        this.nombreCompleto = nombreCompleto;
         this.nomUsuario = nomUsuario;
-        this.clave      = clave;
-        this.rol        = rol;
-        this.estado     = estado;
+        this.clave = clave;
+        this.rol = rol;
+        this.estado = estado;
     }
 
-    //---------------------------Getters y Setters---------------------------//
     public int getId() {
         return id;
     }
@@ -48,52 +40,20 @@ public class ObjUsuario {
         this.id = id;
     }
 
-    public String getCedula() {
-        return cedula;
+    public String getIdentificacion() {
+        return identificacion;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreCompleto() {
+        return nombreCompleto;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getAprellidos() {
-        return aprellidos;
-    }
-
-    public void setAprellidos(String aprellidos) {
-        this.aprellidos = aprellidos;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
     }
 
     public String getNomUsuario() {
@@ -127,5 +87,5 @@ public class ObjUsuario {
     public void setEstado(int estado) {
         this.estado = estado;
     }
-    
+
 }
