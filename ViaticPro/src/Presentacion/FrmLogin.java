@@ -41,10 +41,10 @@ public class FrmLogin extends javax.swing.JFrame {
         lblUsuario = new javax.swing.JLabel();
         lblClave = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        txtClave = new javax.swing.JPasswordField();
         lblImgUsr = new javax.swing.JLabel();
         btnOk = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        txtClave = new javax.swing.JPasswordField();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,8 +61,9 @@ public class FrmLogin extends javax.swing.JFrame {
 
         lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitulo.setText("VIATIC PRO");
-        getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 155, 35));
+        getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 180, 35));
 
         lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
@@ -74,7 +75,6 @@ public class FrmLogin extends javax.swing.JFrame {
         lblClave.setText("Contraseña:");
         getContentPane().add(lblClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 95, -1));
 
-        txtUsuario.setBackground(new java.awt.Color(204, 204, 204));
         txtUsuario.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,21 +88,12 @@ public class FrmLogin extends javax.swing.JFrame {
         });
         getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 340, 30));
 
-        txtClave.setBackground(new java.awt.Color(204, 204, 204));
-        txtClave.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        txtClave.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtClaveKeyPressed(evt);
-            }
-        });
-        getContentPane().add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 340, 30));
+        lblImgUsr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuario (2).png"))); // NOI18N
+        getContentPane().add(lblImgUsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 130, 140));
 
-        lblImgUsr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/emblem-people.png"))); // NOI18N
-        getContentPane().add(lblImgUsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 116, 127));
-
-        btnOk.setBackground(new java.awt.Color(204, 204, 204));
+        btnOk.setBackground(new java.awt.Color(0, 153, 102));
         btnOk.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnOk.setForeground(new java.awt.Color(51, 51, 51));
+        btnOk.setForeground(new java.awt.Color(242, 242, 242));
         btnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ingresar24.png"))); // NOI18N
         btnOk.setText("Ingresar");
         btnOk.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -113,9 +104,9 @@ public class FrmLogin extends javax.swing.JFrame {
         });
         getContentPane().add(btnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 120, 40));
 
-        btnSalir.setBackground(new java.awt.Color(204, 204, 204));
+        btnSalir.setBackground(new java.awt.Color(153, 0, 0));
         btnSalir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnSalir.setForeground(new java.awt.Color(51, 51, 51));
+        btnSalir.setForeground(new java.awt.Color(242, 242, 242));
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salir24.png"))); // NOI18N
         btnSalir.setText("Salir");
         btnSalir.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -125,10 +116,11 @@ public class FrmLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 120, 40));
+        getContentPane().add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 342, 340, 30));
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoLisoTurquesa.png"))); // NOI18N
         lblFondo.setText(".");
-        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
 
         getAccessibleContext().setAccessibleDescription("");
 
@@ -164,13 +156,6 @@ public class FrmLogin extends javax.swing.JFrame {
                     "Aviso Importante", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnOkActionPerformed
-
-    private void txtClaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtClaveKeyPressed
-        //--Al presionar Enter en la clave, ejecuta el botón Ingresar
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            btnOk.doClick();
-        }
-    }//GEN-LAST:event_txtClaveKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
