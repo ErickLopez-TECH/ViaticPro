@@ -64,8 +64,6 @@ public class PnlEmpleados extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
@@ -88,6 +86,8 @@ public class PnlEmpleados extends javax.swing.JPanel {
         btnLimpiar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEmpleados = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 255, 229));
         setMaximumSize(new java.awt.Dimension(640, 540));
@@ -95,35 +95,10 @@ public class PnlEmpleados extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(640, 540));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(212, 255, 242));
-        jLabel1.setText("Registro de Empleados");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(184, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(179, 179, 179))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18))
-        );
-
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, -1));
-
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Identificación:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
-        add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 80, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+        add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 100, -1));
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -131,44 +106,44 @@ public class PnlEmpleados extends javax.swing.JPanel {
                 btnBuscarActionPerformed(evt);
             }
         });
-        add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 90, 40, 40));
+        add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, 30, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Cédula:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, -1, -1));
-        add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 220, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, -1, -1));
+        add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 220, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Estado:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
         cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inactivo", "Activo" }));
-        add(cmbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 160, -1));
+        add(cmbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 160, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Nombre:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, -1));
-        add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 170, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, -1, -1));
+        add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 170, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Apellido 1:");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
-        add(txtApellido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 160, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
+        add(txtApellido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 160, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("Apellido 2:");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, -1, -1));
-        add(txtApellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 170, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, -1, -1));
+        add(txtApellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 170, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setText("Teléfono:");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setText("Dirección:");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, -1, -1));
-        add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 160, -1));
-        add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 170, -1));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, -1, -1));
+        add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 160, -1));
+        add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 220, 170, -1));
 
         btnGuardar.setBackground(new java.awt.Color(204, 255, 204));
         btnGuardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -180,7 +155,7 @@ public class PnlEmpleados extends javax.swing.JPanel {
                 btnGuardarActionPerformed(evt);
             }
         });
-        add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 140, 37));
+        add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 140, 37));
 
         btnBorrar.setBackground(new java.awt.Color(255, 153, 153));
         btnBorrar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -192,7 +167,7 @@ public class PnlEmpleados extends javax.swing.JPanel {
                 btnBorrarActionPerformed(evt);
             }
         });
-        add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 140, 37));
+        add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 140, 37));
 
         btnLimpiar.setBackground(new java.awt.Color(204, 204, 255));
         btnLimpiar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -204,7 +179,7 @@ public class PnlEmpleados extends javax.swing.JPanel {
                 btnLimpiarActionPerformed(evt);
             }
         });
-        add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 140, 38));
+        add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, 140, 38));
 
         tblEmpleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -224,7 +199,17 @@ public class PnlEmpleados extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblEmpleados);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 370, 600, 160));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 600, 200));
+
+        jPanel1.setBackground(new java.awt.Color(153, 255, 204));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102)));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel1.setText("Empleados");
+        jPanel1.add(jLabel1);
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
