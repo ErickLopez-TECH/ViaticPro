@@ -88,7 +88,7 @@ public class FrmLogin extends javax.swing.JFrame {
         });
         getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 340, 30));
 
-        lblImgUsr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuario (2).png"))); // NOI18N
+        lblImgUsr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuario2.png"))); // NOI18N
         getContentPane().add(lblImgUsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 130, 140));
 
         btnOk.setBackground(new java.awt.Color(0, 153, 102));
@@ -184,10 +184,6 @@ public class FrmLogin extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowOpened
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btnSalirActionPerformed
-
     private void txtUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyPressed
         //--Al presionar Enter en el usuario, pasa el cursor a la clave
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -198,6 +194,10 @@ public class FrmLogin extends javax.swing.JFrame {
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments

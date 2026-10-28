@@ -4,9 +4,12 @@
  */
 package Presentacion;
 
+import Datos.EstructuraBitacora;
 import Datos.Estructuras;
+import Datos.ObjBitacora;
 import Datos.ObjEmpleado;
 import Datos.ObjUsuario;
+import Logica.MetodosBitacora;
 import Logica.MetodosEmpleado;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -20,12 +23,19 @@ public class PnlEmpleados extends javax.swing.JPanel {
     Estructuras almacen = new Estructuras();
     
     MetodosEmpleado misMetodos = new MetodosEmpleado();
+    EstructuraBitacora almacenBitacora = new EstructuraBitacora();
+    MetodosBitacora metodosBita = new MetodosBitacora();
     
     private ObjUsuario usuarioActual; // usuario que inició sesión (para la bitácora)
+    private String nombreUser;
+    static String seccion = "Empleados";
+    static String movimiento;
+    
 
     public PnlEmpleados(ObjUsuario usuario) {
         initComponents();
         this.usuarioActual = usuario;
+        this.nombreUser = usuario.getNomUsuario();
         tblEmpleados.setModel(almacen.mostrarEmpleados());
         txtId.setEditable(false);
     }
@@ -249,13 +259,21 @@ public class PnlEmpleados extends javax.swing.JPanel {
             miEmpleado.setId(misMetodos.siguienteEmpleado());
             almacen.agregarEmpleado(miEmpleado);
             JOptionPane.showMessageDialog(null, "Empleado agregado correctamente");
-            // BITÁCORA: aquí se registra "Crear empleado" con usuarioActual
+            
+            movimiento = "Agrego";
+            
         } else{
             almacen.editarEmpleado(indice, miEmpleado);
             JOptionPane.showMessageDialog(null, "Empleado modificado correctamente");
-            // BITÁCORA: aquí se registra "Modificar empleado" con usuarioActual
+            
+            movimiento = "Edito";
         }
 
+        int idBitacora = metodosBita.siguienteBitacora();
+        
+        ObjBitacora miBitacora = new ObjBitacora(idBitacora, nombreUser, seccion, movimiento);
+        almacenBitacora.agregarBitacora(miBitacora);
+        
         tblEmpleados.setModel(almacen.mostrarEmpleados());
         limpiarCampos();
     }//GEN-LAST:event_btnGuardarActionPerformed
@@ -294,7 +312,11 @@ public class PnlEmpleados extends javax.swing.JPanel {
             almacen.quitarEmpleado(indice);
             tblEmpleados.setModel(almacen.mostrarEmpleados());
             limpiarCampos();
-            // BITÁCORA: aquí se registra "Borrar empleado" con usuarioActual
+            
+            movimiento = "Elimino";
+            int idBitacora = metodosBita.siguienteBitacora();
+            ObjBitacora miBitacora = new ObjBitacora(idBitacora, nombreUser, seccion, movimiento);
+            almacenBitacora.agregarBitacora(miBitacora);
         }
     }//GEN-LAST:event_btnBorrarActionPerformed
 

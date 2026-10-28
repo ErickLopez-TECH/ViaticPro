@@ -4,6 +4,7 @@ import Datos.EstructuraLiquidacion;
 import Logica.MetodosLiquidaciones;
 import Datos.ObjDetalleViatico;
 import Datos.ObjLiquidacion;
+import Datos.ObjUsuario;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -17,10 +18,13 @@ public class PnlLiquidacion extends javax.swing.JPanel {
     private final MetodosLiquidaciones misMetodos = new MetodosLiquidaciones();
     private final ArrayList<ObjDetalleViatico> lineasTemp = new ArrayList<>(); 
     private final SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-
     
-    public PnlLiquidacion() {
+    private ObjUsuario usuario;
+    
+    public PnlLiquidacion(ObjUsuario usuarioActual) {
         this(new EstructuraLiquidacion());
+        
+        this.usuario = usuarioActual;
     }
 
     
