@@ -6,6 +6,7 @@ package Logica;
 
 import Datos.ObjUsuario;
 import Presentacion.FrmHome;
+import Presentacion.FrmLogin;
 
 /**
  *
@@ -17,12 +18,9 @@ public class ViaticPro {
      * @param args the command line arguments
      */
      public static void main(String[] args) {
-        // PRUEBA TEMPORAL (abre el menú sin pasar por el login)
-        ObjUsuario prueba = new ObjUsuario();
-        prueba.setNomUsuario("dreyes");
-        prueba.setRol(0); // 0 = admin, se puede cambiar a 1 para probar la restricción
+        
 
-        FrmHome home = new FrmHome(prueba);
+        FrmLogin home = new FrmLogin();
         home.setLocationRelativeTo(null);
         home.setVisible(true);
     }

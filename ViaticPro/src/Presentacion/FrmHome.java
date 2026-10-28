@@ -6,6 +6,8 @@ package Presentacion;
 
 import Datos.ObjUsuario;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import org.netbeans.lib.awtextra.AbsoluteConstraints;
 
 /**
  *
@@ -325,15 +327,15 @@ public class FrmHome extends javax.swing.JFrame {
     private void btnViaticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViaticosActionPerformed
         // TODO add your handling code here:
         pnlSubReportes.setVisible(false);
-        // mostrarPanel(new PnlViaticos(usuarioActual));
-        JOptionPane.showMessageDialog(null, "Módulo en construcción");
+        mostrarPanel(new PnlViaticos(usuarioActual));
+        
     }//GEN-LAST:event_btnViaticosActionPerformed
 
     private void btnLiquidacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLiquidacionActionPerformed
         // TODO add your handling code here:
         pnlSubReportes.setVisible(false);
-        // mostrarPanel(new PnlLiquidacion(usuarioActual));
-        JOptionPane.showMessageDialog(null, "Módulo en construcción");
+        mostrarPanel(new PnlLiquidacion(usuarioActual));
+        
     }//GEN-LAST:event_btnLiquidacionActionPerformed
 
     private void btnCargaDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargaDatosActionPerformed
@@ -359,8 +361,8 @@ public class FrmHome extends javax.swing.JFrame {
     private void btnRepViaticosFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepViaticosFechaActionPerformed
         // TODO add your handling code here:
         pnlSubReportes.setVisible(false);
-        // mostrarPanel(new PnlRepViaticosFecha(usuarioActual));
-        JOptionPane.showMessageDialog(null, "Módulo en construcción");
+        mostrarPanel(new PnlRepCFech());
+        
     }//GEN-LAST:event_btnRepViaticosFechaActionPerformed
 
     private void btnRepViaticosEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepViaticosEmpActionPerformed
@@ -373,8 +375,8 @@ public class FrmHome extends javax.swing.JFrame {
     private void btnRepMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepMovimientosActionPerformed
         // TODO add your handling code here:
         pnlSubReportes.setVisible(false);
-        // mostrarPanel(new PnlRepMovimientos(usuarioActual));
-        JOptionPane.showMessageDialog(null, "Módulo en construcción");
+        mostrarPanel(new PnlReportesBita());
+        
     }//GEN-LAST:event_btnRepMovimientosActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -385,11 +387,40 @@ public class FrmHome extends javax.swing.JFrame {
         this.dispose(); // cierra el menú
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void mostrarPanel(javax.swing.JPanel panel){
+    
+    private void mostrarPanel(JPanel panel){
         pnlContenido.removeAll();
-        pnlContenido.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 540));
+        pnlContenido.add(panel, new AbsoluteConstraints(0, 0, 650, 540));
         pnlContenido.revalidate();
         pnlContenido.repaint();
+    
+    }
+    
+    
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new FrmHome(null).setVisible(true);
+            }
+        });
     }
     
 

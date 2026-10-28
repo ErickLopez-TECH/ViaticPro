@@ -8,6 +8,7 @@ import Datos.EstructuraBitacora;
 import Datos.EstructuraViaticos;
 
 import Datos.ObjBitacora;
+import Datos.ObjUsuario;
 import Datos.ObjViatico;
 import Logica.MetodosBitacora;
 import Logica.MetodosViatico;
@@ -27,16 +28,21 @@ public class PnlViaticos extends javax.swing.JPanel {
     MetodosViatico viaticosMetodos = new MetodosViatico();
     MetodosBitacora metodosBita = new MetodosBitacora();
     
-    static String nombre = "Erick";
+    private ObjUsuario usuarioActual;
+    private String nombreUser;
     static String seccion = "Viaticos";
     static String movimiento;
     
     /**
      * Creates new form PnlCajas
      */
-    public PnlViaticos() {
+    public PnlViaticos(ObjUsuario usuario) {
+        
         initComponents();
         tblViaticos.setModel(almacen.mostrarViaticos());
+        
+        this.usuarioActual = usuario;
+        this.nombreUser = usuario.getNomUsuario();
     }
 
     /**
@@ -170,12 +176,13 @@ public class PnlViaticos extends javax.swing.JPanel {
                 .addGap(130, 130, 130))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(36, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(24, 206, Short.MAX_VALUE)
-                .addComponent(lblTitulo)
-                .addGap(196, 196, 196))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblTitulo)
+                        .addGap(196, 196, 196))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,7 +254,7 @@ public class PnlViaticos extends javax.swing.JPanel {
         
         //le dice que si el indice es = -1 esto quiere decir que debeb de garega pero de lo contarrio e sporque existe
         int indice = viaticosMetodos.buscarviatico(id);
-        String nombreUser = "";
+        
         if(indice ==-1){
             
             //validacion de campoos antes d eguardar
@@ -259,15 +266,16 @@ public class PnlViaticos extends javax.swing.JPanel {
             almacen.agregarViatico(miViatico);
             
             
-            movimiento = "Agrego el viatico "+ nombre;
-            nombreUser = "Erick";
+            movimiento = "Agrego";
+            
             
         }else{
             
-            movimiento = "edito el viatico "+ nombre;
-            nombreUser = "Juan";
+            movimiento = "Edito";
+            
             almacen.editarViatico(indice, miViatico);
         }
+        
         
         int idBitacora = metodosBita.siguienteBitacora();
         
@@ -314,6 +322,12 @@ public class PnlViaticos extends javax.swing.JPanel {
             
             if(indice != -1){
                 almacen.eliminarViatico(indice);
+                tblViaticos.setModel(almacen.mostrarViaticos());
+                
+                movimiento = "Elimino";
+                int idBitacora = metodosBita.siguienteBitacora();
+                ObjBitacora miBitacora = new ObjBitacora(idBitacora, nombreUser, seccion, movimiento);
+                almacenBitacora.agregarBitacora(miBitacora);
                 tblViaticos.setModel(almacen.mostrarViaticos());
             }
         }
