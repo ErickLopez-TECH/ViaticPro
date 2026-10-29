@@ -5,8 +5,11 @@
 package Logica;
 
 import Datos.Estructuras;
+import Datos.ObjBitacora;
 import Datos.ObjEmpleado;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -60,6 +63,20 @@ public class MetodosEmpleado {
         }
         return resultado;
     }
+    
+    public ObjEmpleado buscarCedulaObj(String cedula){
+        
+        ObjEmpleado miEmpleado = null;
+        
+        ArrayList<ObjEmpleado> misEmpleados = almacen.listarEmpleados();
+        for (int i = 0; i < misEmpleados.size(); i++){
+            if (misEmpleados.get(i).getCedula().equals(cedula)){
+                miEmpleado = misEmpleados.get(i);
+                break;
+            }
+        }
+        return miEmpleado;
+    }
 
     //valida los datos del empleado. Devuelve el mensaje de error, o "" si todo está bien
     public String validarEmpleado(String cedula, String nombre, String apellido1, String apellido2, String telefono, String direccion){
@@ -81,4 +98,39 @@ public class MetodosEmpleado {
         }
         return activos;
     }
+    
+   /* public DefaultTableModel filtrarBitacora(String usuarioFiltro, String fechaIni, String fechaFin) {
+        String[] columnas = {"Viatico", "Nombre", "Sección", "Movimiento", "Fecha"};
+        DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
+        SimpleDateFormat sdfCompleto = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        SimpleDateFormat sdfFecha = new SimpleDateFormat("yyyy-MM-dd");
+
+        for (int i = 0; i < listaBitacora.size(); i++) {
+            ObjBitacora item = listaBitacora.get(i);
+
+            
+            boolean coincideUsuario = (item.getNombre().equalsIgnoreCase(usuarioFiltro));
+
+
+            boolean dentroDeRango = true;
+
+            
+            String fechaObjeto = sdfFecha.format(item.getFecha());
+            dentroDeRango = (fechaObjeto.compareTo(fechaIni) >= 0 && fechaObjeto.compareTo(fechaFin) <= 0);
+            
+
+            
+            if (coincideUsuario && dentroDeRango) {
+                modelo.addRow(new Object[]{
+                    item.getId(),
+                    item.getNombre(),
+                    item.getSeccion(),
+                    item.getMovimiento(),
+                    sdfCompleto.format(item.getFecha())
+                });
+            }
+        }
+        return modelo;
+}
+   */ 
 }
