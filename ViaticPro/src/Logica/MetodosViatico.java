@@ -48,4 +48,21 @@ public class MetodosViatico {
         return resultado;
     }
     
+    
+    public ObjViatico buscarviaticoObj(int id){
+        ObjViatico miViaticoObj = null;
+        
+        
+        ArrayList<ObjViatico> miviatico = almacen.listarViaticos();
+        
+        //buscamos entre la lsita(recorrer)
+        for (int i = 0; i < miviatico.size(); i++) {
+            //condicionamos la bsuqueda
+            if(miviatico.get(i).getId() == id){
+                
+                miViaticoObj = miviatico.get(i) ;
+            }
+        }
+        return miViaticoObj;
+    }
 }

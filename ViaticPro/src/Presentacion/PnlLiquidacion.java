@@ -145,9 +145,14 @@ public class PnlLiquidacion extends javax.swing.JPanel {
         lblTotal = new javax.swing.JLabel();
         btnNueva = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
+        txtNombreViati = new javax.swing.JTextField();
+        jSpinField1 = new com.toedter.components.JSpinField();
+        lblHora = new javax.swing.JLabel();
+        lblHora2 = new javax.swing.JLabel();
+        jSpinField2 = new com.toedter.components.JSpinField();
 
         setPreferredSize(new java.awt.Dimension(639, 562));
-        setLayout(null);
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlConsulta.setLayout(null);
 
@@ -203,55 +208,40 @@ public class PnlLiquidacion extends javax.swing.JPanel {
 
         tabs.addTab("Consultar liquidaciones", pnlConsulta);
 
-        pnlNueva.setLayout(null);
+        pnlNueva.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNumero.setText("N.º liquidación:");
-        pnlNueva.add(lblNumero);
-        lblNumero.setBounds(15, 15, 110, 24);
+        pnlNueva.add(lblNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 15, 110, 24));
 
         txtNumero.setEditable(false);
-        pnlNueva.add(txtNumero);
-        txtNumero.setBounds(130, 15, 120, 24);
+        pnlNueva.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 15, 120, 24));
 
         lblIdent.setText("Identificación:");
-        pnlNueva.add(lblIdent);
-        lblIdent.setBounds(270, 15, 90, 24);
-        pnlNueva.add(txtIdentificacion);
-        txtIdentificacion.setBounds(365, 15, 250, 24);
+        pnlNueva.add(lblIdent, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 15, 90, 24));
+        pnlNueva.add(txtIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 15, 250, 24));
 
         lblInicial.setText("Fecha inicial:");
-        pnlNueva.add(lblInicial);
-        lblInicial.setBounds(15, 50, 110, 24);
-        pnlNueva.add(dchInicial);
-        dchInicial.setBounds(130, 50, 150, 24);
+        pnlNueva.add(lblInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 50, 110, 24));
+        pnlNueva.add(dchInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 120, 24));
 
         lblFinal.setText("Fecha final:");
-        pnlNueva.add(lblFinal);
-        lblFinal.setBounds(330, 50, 90, 24);
-        pnlNueva.add(dchFinal);
-        dchFinal.setBounds(430, 50, 150, 24);
+        pnlNueva.add(lblFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 90, 24));
+        pnlNueva.add(dchFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 110, 24));
 
         lblJust.setText("Justificación:");
-        pnlNueva.add(lblJust);
-        lblJust.setBounds(15, 85, 110, 24);
-        pnlNueva.add(txtJustificacion);
-        txtJustificacion.setBounds(130, 85, 485, 24);
-        pnlNueva.add(jSeparator1);
-        jSeparator1.setBounds(15, 122, 600, 10);
+        pnlNueva.add(lblJust, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 85, 110, 24));
+        pnlNueva.add(txtJustificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 85, 485, 24));
+        pnlNueva.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 122, 600, 10));
 
-        lblTipo.setText("Tipo de viático:");
-        pnlNueva.add(lblTipo);
-        lblTipo.setBounds(15, 140, 110, 24);
+        lblTipo.setText("ID Viatico:");
+        pnlNueva.add(lblTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 140, 110, 24));
 
         cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Transporte", "Alimentación", "Hospedaje", "Otros" }));
-        pnlNueva.add(cmbTipo);
-        cmbTipo.setBounds(130, 140, 150, 24);
+        pnlNueva.add(cmbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 150, 24));
 
         lblMonto.setText("Monto asignado:");
-        pnlNueva.add(lblMonto);
-        lblMonto.setBounds(290, 140, 100, 24);
-        pnlNueva.add(txtMonto);
-        txtMonto.setBounds(395, 140, 100, 24);
+        pnlNueva.add(lblMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 120, 24));
+        pnlNueva.add(txtMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 120, 24));
 
         btnAgregar.setText("Agregar línea");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -259,8 +249,7 @@ public class PnlLiquidacion extends javax.swing.JPanel {
                 btnAgregarActionPerformed(evt);
             }
         });
-        pnlNueva.add(btnAgregar);
-        btnAgregar.setBounds(505, 138, 110, 28);
+        pnlNueva.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, 110, -1));
 
         tblLineas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -280,8 +269,7 @@ public class PnlLiquidacion extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblLineas);
 
-        pnlNueva.add(jScrollPane1);
-        jScrollPane1.setBounds(15, 180, 600, 240);
+        pnlNueva.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 600, 210));
 
         btnQuitar.setText("Quitar línea");
         btnQuitar.addActionListener(new java.awt.event.ActionListener() {
@@ -289,19 +277,16 @@ public class PnlLiquidacion extends javax.swing.JPanel {
                 btnQuitarActionPerformed(evt);
             }
         });
-        pnlNueva.add(btnQuitar);
-        btnQuitar.setBounds(15, 430, 130, 26);
+        pnlNueva.add(btnQuitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 130, 26));
 
         lblTotalTxt.setText("TOTAL:");
         lblTotalTxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        pnlNueva.add(lblTotalTxt);
-        lblTotalTxt.setBounds(400, 430, 60, 26);
+        pnlNueva.add(lblTotalTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 430, 60, 26));
 
         lblTotal.setText("0.00");
         lblTotal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        pnlNueva.add(lblTotal);
-        lblTotal.setBounds(465, 430, 150, 26);
+        pnlNueva.add(lblTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 430, 150, 26));
 
         btnNueva.setText("Nueva liquidación");
         btnNueva.addActionListener(new java.awt.event.ActionListener() {
@@ -309,8 +294,7 @@ public class PnlLiquidacion extends javax.swing.JPanel {
                 btnNuevaActionPerformed(evt);
             }
         });
-        pnlNueva.add(btnNueva);
-        btnNueva.setBounds(15, 470, 160, 28);
+        pnlNueva.add(btnNueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 470, 160, -1));
 
         btnGuardar.setText("Guardar liquidación");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -318,13 +302,20 @@ public class PnlLiquidacion extends javax.swing.JPanel {
                 btnGuardarActionPerformed(evt);
             }
         });
-        pnlNueva.add(btnGuardar);
-        btnGuardar.setBounds(445, 470, 170, 28);
+        pnlNueva.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 470, 170, -1));
+        pnlNueva.add(txtNombreViati, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 160, -1));
+        pnlNueva.add(jSpinField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 40, 20));
+
+        lblHora.setText("Hora:");
+        pnlNueva.add(lblHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 42, -1));
+
+        lblHora2.setText("Hora:");
+        pnlNueva.add(lblHora2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, -1, -1));
+        pnlNueva.add(jSpinField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, 40, 20));
 
         tabs.addTab("Nueva liquidación", pnlNueva);
 
-        add(tabs);
-        tabs.setBounds(0, 0, 639, 562);
+        add(tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 639, 562));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
@@ -395,8 +386,12 @@ public class PnlLiquidacion extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
+    private com.toedter.components.JSpinField jSpinField1;
+    private com.toedter.components.JSpinField jSpinField2;
     private javax.swing.JLabel lblDetalle;
     private javax.swing.JLabel lblFinal;
+    private javax.swing.JLabel lblHora;
+    private javax.swing.JLabel lblHora2;
     private javax.swing.JLabel lblIdent;
     private javax.swing.JLabel lblInicial;
     private javax.swing.JLabel lblJust;
@@ -415,6 +410,7 @@ public class PnlLiquidacion extends javax.swing.JPanel {
     private javax.swing.JTextField txtIdentificacion;
     private javax.swing.JTextField txtJustificacion;
     private javax.swing.JTextField txtMonto;
+    private javax.swing.JTextField txtNombreViati;
     private javax.swing.JTextField txtNumero;
     // End of variables declaration//GEN-END:variables
 }

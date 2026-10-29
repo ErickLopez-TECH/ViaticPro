@@ -368,8 +368,8 @@ public class FrmHome extends javax.swing.JFrame {
     private void btnRepViaticosEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepViaticosEmpActionPerformed
         // TODO add your handling code here:
         pnlSubReportes.setVisible(false);
-        // mostrarPanel(new PnlRepViaticosEmp(usuarioActual));
-        JOptionPane.showMessageDialog(null, "Módulo en construcción");
+        mostrarPanel(new PnlRepCViati());
+        
     }//GEN-LAST:event_btnRepViaticosEmpActionPerformed
 
     private void btnRepMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepMovimientosActionPerformed
