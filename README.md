@@ -1,80 +1,87 @@
 <div align="center">
 
-# 🚀 Viatic
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,100:161b22&height=120&section=header&animation=fadeIn" width="100%"/>
 
-### Sistema de Control y Gestión de Viáticos
+# 🚀 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=32&duration=3000&pause=1000&color=38BDF8&center=false&vCenter=true&width=350&lines=Viatic+System;Control+Inteligente;Gestión+de+Viáticos" alt="Typing SVG" />
 
-Aplicación de escritorio para la administración y control de **viáticos, gastos y liquidaciones**,
-construida con arquitectura por capas y diseño modular.
+### *Sistema Integral de Control, Gestión y Liquidación de Viáticos*
 
-![Java](https://img.shields.io/badge/Java-JDK-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![NetBeans](https://img.shields.io/badge/Apache_NetBeans-1B6AC6?style=for-the-badge&logo=apachenetbeanside&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-Crostini-FCC624?style=for-the-badge&logo=linux&logoColor=black)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+<p align="center">
+  <img src="https://img.shields.io/badge/Java-JDK-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" />
+  <img src="https://img.shields.io/badge/Apache_NetBeans-1B6AC6?style=for-the-badge&logo=apachenetbeanside&logoColor=white" />
+  <img src="https://img.shields.io/badge/Architecture-N--Tier-10B981?style=for-the-badge&logo=codeforces&logoColor=white" />
+  <img src="https://img.shields.io/badge/Linux-Crostini-FCC624?style=for-the-badge&logo=linux&logoColor=black" />
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
+</p>
 
 </div>
 
 ---
 
 ## 📑 Tabla de contenido
-
-- [🎬 Demostración visual](#-demostración-visual)
-- [✨ Características](#-características)
-- [🏗️ Arquitectura](#️-arquitectura-por-capas-n-tier)
-- [📂 Estructura del proyecto](#-estructura-del-proyecto)
-- [🛠️ Tecnologías](#️-tecnologías-utilizadas)
-- [🗺️ Roadmap](#️-roadmap)
-- [👤 Autor](#-autor)
-- [🤝 Conectemos](#-conectemos)
+- [✨ Descripción General](#-descripción-general)
+- [🎬 Vista Previa del Sistema](#-vista-previa-del-sistema)
+- [🛠️ Características Principales](#️-características-principales)
+- [🏗️ Arquitectura por Capas](#️-arquitectura-por-capas-n-tier)
+- [📂 Estructura del Proyecto](#-estructura-del-proyecto)
+- [👥 Equipo de Desarrollo](#-equipo-de-desarrollo)
 
 ---
 
-## 🎬 Demostración visual
+## ✨ Descripción General
 
-<div align="center">
- her
- 
- <br>
- <sub><i>Gestión y registro de solicitudes y liquidaciones de viáticos en tiempo real.</i></sub>
+<div style="background: rgba(22, 27, 34, 0.7); border: 1px solid rgba(56, 189, 248, 0.2); padding: 20px; border-radius: 12px; backdrop-filter: blur(10px);">
+
+**Viatic** es una solución robusta de escritorio desarrollada en **Java (Swing / AWT)** bajo el entorno de **Apache NetBeans (ANT)**. Diseñada para automatizar y optimizar el flujo de trabajo corporativo en la asignación, validación horaria, control de gastos y liquidación de viáticos para el personal de campo y viajes de trabajo.
+
 </div>
 
 ---
 
-## ✨ Características
+## 🎬 Vista Previa del Sistema
 
-| | Funcionalidad | Descripción |
-|---|---|---|
-| 📋 | **Gestión de solicitudes** | Módulo completo para **registrar, consultar, modificar y aprobar** viáticos de forma dinámica. |
-| 🗂️ | **Control de gastos** | Clasificación y cálculo automatizado de asignaciones por concepto de transporte, hospedaje y alimentación. |
-| 🎨 | **Interfaz limpia** | Menú de navegación intuitivo con controles de acceso y validación de campos numéricos y de texto. |
-| 🧱 | **Código mantenible** | Separación estricta de responsabilidades para facilitar el trabajo en equipo y la escalabilidad. |
+<img width="801" height="600" alt="viaticPro" src="https://github.com/user-attachments/assets/a89cc3d4-2626-4678-82ec-7005fd99faa1" />
 
----
 
-## 🏗️ Arquitectura por capas (N-Tier)
+<div align="center">
 
-El proyecto sigue una separación estricta de responsabilidades:
+| Módulo Principal | Panel de Control & Operaciones |
+| :---: | :---: |
+| <sub>*Interfaz limpia y navegación fluida mediante atajos y teclado.*</sub> | <sub>*Esquema Maestro-Detalle con validación horaria automática.*</sub> |
+| <img src="https://via.placeholder.com/450x260/0d1117/38BDF8?text=Interfaz+Principal+(Viatic)" width="450px" style="border-radius: 8px; border: 1px solid rgba(56,189,248,0.3);" /> | <img src="https://via.placeholder.com/450x260/0d1117/10B981?text=Panel+Liquidaciones" width="450px" style="border-radius: 8px; border: 1px solid rgba(16,185,129,0.3);" /> |
 
-├─────────────────────────────────────┤
-│   Presentación  (Swing / AWT)       │  ← Interfaz gráfica de usuario
-├─────────────────────────────────────┤
-│   Lógica        (Reglas de negocio) │  ← Controladores de cálculos y operaciones
-├─────────────────────────────────────┤
-│   Datos         (Modelos / Clases)  │  ← Estructuras de entidades y manejo local
-└─────────────────────────────────────┘
+</div>
 
 ---
 
-## 📂 Estructura del proyecto
+## 🛠️ Características Principales
+
+| Ícono | Módulo / Característica | Descripción Técnica |
+| :---: | :--- | :--- |
+| 🛡️ | **Seguridad & Accesos** | Control estricto de roles (Administrador y Usuario Normal) condicionados por estados de actividad en el sistema. |
+| 📋 | **Gestión de Empleados** | Operaciones CRUD completas con validación de cédulas, estados activos/inactivos y control en tiempo real. |
+| ⏱️ | **Validación de Tiempos** | Restricciones horarias automatizadas para Desayunos, Almuerzos y Cenas según políticas empresariales. |
+| 🧾 | **Esquema Maestro-Detalle** | Estructura modular inspirada en sistemas de facturación para el desglose y cálculo de liquidaciones. |
+| 📊 | **Reportes Dinámicos** | Generación de informes filtrados por rangos de fechas, empleados específicos y bitácora de operaciones. |
+
+---
+
+## 🏗️ Arquitectura por Capas (N-Tier)
+
+El código fuente se encuentra estrictamente desacoplado para garantizar escalabilidad, mantenibilidad y facilidades de trabajo colaborativo:
 
 ```text
+ ┌─────────────────────────────────────────────────────────┐
+ │               PRESENTACIÓN (Swing / AWT)                │  ← Interfaces gráficas, formularios y eventos
+ ├─────────────────────────────────────────────────────────┤
+ │               LÓGICA (Reglas de Negocio)                │  ← Controladores, validaciones y cálculos
+ ├─────────────────────────────────────────────────────────┤
+ │               DATOS (Modelos / Entidades)               │  ← Clases de objetos y gestión de estructuras
+ └─────────────────────────────────────────────────────────┘
+
 ViaticPro/
 └── src/
     ├── Datos/          # Entidades y modelos de datos (ObjViatico, ObjEmpleado, etc.)
-    ├── Logica/         # Reglas de negocio y controladores de operaciones
-    ├── Presentacion/   # Interfaz gráfica de usuario (Swing / AWT)
-    └── Imagenes/       # Recursos gráficos y multimedia del sistema
-
-👤 Autor
-Erick Lopez, Dylan Alvarez y David Reyes
-Desarrollador Java · Apasionado por los sistemas de gestión y la optimización de procesos.
+    ├── Logica/         # Reglas de negocio, validaciones y controladores de operaciones
+    ├── Presentacion/   # Interfaz gráfica de usuario (JFrame y JPanel Forms)
+    └── Imagenes/       # Recursos gráficos, iconos y multimedia del sistema
