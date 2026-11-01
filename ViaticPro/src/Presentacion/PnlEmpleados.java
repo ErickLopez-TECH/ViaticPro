@@ -128,6 +128,7 @@ public class PnlEmpleados extends javax.swing.JPanel {
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
         cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inactivo", "Activo" }));
+        cmbEstado.setSelectedIndex(1);
         add(cmbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 160, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N

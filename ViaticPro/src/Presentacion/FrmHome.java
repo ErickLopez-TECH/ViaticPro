@@ -4,7 +4,10 @@
  */
 package Presentacion;
 
+import Datos.EstructuraViaticos;
 import Datos.ObjUsuario;
+import Datos.ObjViatico;
+import Logica.MetodosViatico;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
@@ -16,7 +19,7 @@ import org.netbeans.lib.awtextra.AbsoluteConstraints;
 public class FrmHome extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmHome.class.getName());
-
+    static boolean btnPress = false;
     /**
      * Creates new form FrmHome
      */
@@ -312,10 +315,10 @@ public class FrmHome extends javax.swing.JFrame {
         pnlSubReportes.setVisible(false);
 
         // Restricción por rol: solo el administrador (0) usa estas opciones
-        if (usuarioActual.getRol() != 0){
+     /*   if (usuarioActual.getRol() != 0){
             btnUsuarios.setEnabled(false);
             btnCargaDatos.setEnabled(false);
-        }
+        }*/
     }//GEN-LAST:event_formWindowOpened
 
     private void btnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadosActionPerformed
@@ -341,8 +344,41 @@ public class FrmHome extends javax.swing.JFrame {
     private void btnCargaDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargaDatosActionPerformed
         // TODO add your handling code here:
         pnlSubReportes.setVisible(false);
-        // aquí va la carga inicial de datos (solo administrador)
-        JOptionPane.showMessageDialog(null, "Módulo en construcción");
+        
+        if(!btnPress){
+            ObjViatico miViatico1= new  ObjViatico();
+            MetodosViatico viaticosMetodos = new MetodosViatico();
+            EstructuraViaticos almacen = new EstructuraViaticos();
+
+            miViatico1.setId(viaticosMetodos.siguienteViatico());
+            miViatico1.setNombre("Desayuno");
+            miViatico1.setMonto(3000);
+            miViatico1.setEstado(0);
+
+            almacen.agregarViatico(miViatico1);
+            
+            ObjViatico miViatico2= new  ObjViatico();
+           
+            miViatico2.setId(viaticosMetodos.siguienteViatico());
+            miViatico2.setNombre("Almuerzo");
+            miViatico2.setMonto(5000);
+            miViatico2.setEstado(0);
+
+            almacen.agregarViatico(miViatico2);
+            
+            ObjViatico miViatico3= new  ObjViatico();
+           
+            miViatico3.setId(viaticosMetodos.siguienteViatico());
+            miViatico3.setNombre("Cena");
+            miViatico3.setMonto(5000);
+            miViatico3.setEstado(0);
+
+            almacen.agregarViatico(miViatico3);
+            
+            btnPress = true;
+        }else{
+            JOptionPane.showMessageDialog(this, "Ya has cargado los registros","Proteccion contra duplicados",JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btnCargaDatosActionPerformed
 
     private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
