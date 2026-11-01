@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Dylan
  */
 public class EstructuraUsuarios {
+
     //-- ArrayList de almacenamiento
     static ArrayList<ObjUsuario> listaUsuarios = new ArrayList<>();
 
@@ -21,33 +22,39 @@ public class EstructuraUsuarios {
 
     //--- Métodos de Trabajo ---// Insertar, Modificar, Listar, Borrar
     //--Insertar
-    public void agregarUsuario(ObjUsuario miUsuario){
+    public void agregarUsuario(ObjUsuario miUsuario) {
         listaUsuarios.add(miUsuario);
     }
+
     //--Modificar
-    public void editarUsuario(int indice, ObjUsuario miUsuario){
+    public void editarUsuario(int indice, ObjUsuario miUsuario) {
         listaUsuarios.set(indice, miUsuario);
     }
+
     //--Borrar
-    public void quitarUsuario(int indice){
+    public void quitarUsuario(int indice) {
         listaUsuarios.remove(indice);
     }
+
     //--Devolver la lista
-    public ArrayList<ObjUsuario> listarUsuarios(){
+    public ArrayList<ObjUsuario> listarUsuarios() {
         return new ArrayList<>(listaUsuarios);
     }
 
     //--Mostrar en la tabla
-    public DefaultTableModel mostrarUsuarios(){
-        String[] titulos = {"id", "Nombre usuario", "Nombre", "Identificacion"};
+    public DefaultTableModel mostrarUsuarios() {
+        String[] titulos = {"Id", "Nombre usuario", "Nombre", "Identificación",
+            "Rol", "Estado"};
         DefaultTableModel modelo = new DefaultTableModel(titulos, 0);
 
-        for (int i = 0; i < listaUsuarios.size(); i++){
+        for (int i = 0; i < listaUsuarios.size(); i++) {
             String[] fila = {
-                String.valueOf( listaUsuarios.get(i).getId() ),
+                String.valueOf(listaUsuarios.get(i).getId()),
                 listaUsuarios.get(i).getNomUsuario(),
                 listaUsuarios.get(i).getNombreCompleto(),
-                listaUsuarios.get(i).getIdentificacion()
+                listaUsuarios.get(i).getIdentificacion(),
+                String.valueOf(listaUsuarios.get(i).getRol()),
+                String.valueOf(listaUsuarios.get(i).getEstado())
             };
             modelo.addRow(fila);
         }
