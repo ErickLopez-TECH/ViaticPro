@@ -59,6 +59,7 @@ public class FrmHome extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lblUsuario = new javax.swing.JLabel();
+        btnCerrar = new javax.swing.JButton();
         pnlContenido = new javax.swing.JPanel();
 
         jTextField1.setText("jTextField1");
@@ -284,6 +285,14 @@ public class FrmHome extends javax.swing.JFrame {
         lblUsuario.setForeground(new java.awt.Color(204, 255, 204));
         lblUsuario.setText("Bienvenido Usuario:");
 
+        btnCerrar.setBackground(new java.awt.Color(23, 102, 67));
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/apagar.png"))); // NOI18N
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -291,7 +300,9 @@ public class FrmHome extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(341, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 268, Short.MAX_VALUE)
+                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,6 +310,10 @@ public class FrmHome extends javax.swing.JFrame {
                 .addContainerGap(32, Short.MAX_VALUE)
                 .addComponent(lblUsuario)
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnCerrar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 660, 60));
@@ -423,6 +438,11 @@ public class FrmHome extends javax.swing.JFrame {
         this.dispose(); // cierra el menú
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btnCerrarActionPerformed
+
     
     private void mostrarPanel(JPanel panel){
         pnlContenido.removeAll();
@@ -462,6 +482,7 @@ public class FrmHome extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCargaDatos;
+    private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnEmpleados;
     private javax.swing.JButton btnLiquidacion;
     private javax.swing.JButton btnRepMovimientos;
