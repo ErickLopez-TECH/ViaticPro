@@ -31,6 +31,9 @@
 - [👥 Equipo de Desarrollo](#-equipo-de-desarrollo)
 
 ---
+## 💎 Vista Previa
+<img width="801" height="600" alt="viaticPro" src="https://github.com/user-attachments/assets/32c7660f-65ea-4206-9b8f-6dee0545bcb6" />
+
 
 ## 💎 Resumen Ejecutivo
 
