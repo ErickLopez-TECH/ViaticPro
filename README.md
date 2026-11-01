@@ -1,70 +1,116 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,100:161b22&height=120&section=header&animation=fadeIn" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20,30,40&height=140&section=header&animation=fadeIn&fontColor=38BDF8" width="100%"/>
 
-# 🚀 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=32&duration=3000&pause=1000&color=38BDF8&center=false&vCenter=true&width=350&lines=Viatic+System;Control+Inteligente;Gestión+de+Viáticos" alt="Typing SVG" />
+# ⚡ V I A T I C &nbsp; S Y S T E M ⚡
 
-### *Sistema Integral de Control, Gestión y Liquidación de Viáticos*
+<h3 align="center">
+  <a href="https://git.io/typing-svg">
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3500&pause=1000&color=38BDF8&center=true&vCenter=true&width=500&lines=Control+Inteligente+de+Viáticos;Gestión+Maestro-Detalle+Avanzada;Validación+Horaria+Automatizada;Arquitectura+Robusta+en+Java+Swing" alt="Typing SVG" />
+  </a>
+</h3>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Java-JDK-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" />
-  <img src="https://img.shields.io/badge/Apache_NetBeans-1B6AC6?style=for-the-badge&logo=apachenetbeanside&logoColor=white" />
+  <img src="https://img.shields.io/badge/Java-JDK_%2F_Swing-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" />
+  <img src="https://img.shields.io/badge/Apache_NetBeans-ANT-1B6AC6?style=for-the-badge&logo=apachenetbeanside&logoColor=white" />
   <img src="https://img.shields.io/badge/Architecture-N--Tier-10B981?style=for-the-badge&logo=codeforces&logoColor=white" />
   <img src="https://img.shields.io/badge/Linux-Crostini-FCC624?style=for-the-badge&logo=linux&logoColor=black" />
-  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
+  <img src="https://img.shields.io/badge/Git-Workflow-F05032?style=for-the-badge&logo=git&logoColor=white" />
 </p>
 
 </div>
 
 ---
 
-## 📑 Tabla de contenido
-- [✨ Descripción General](#-descripción-general)
-- [🎬 Vista Previa del Sistema](#-vista-previa-del-sistema)
-- [🛠️ Características Principales](#️-características-principales)
+## 📑 Tabla de Contenido
+- [💎 Resumen Ejecutivo](#-resumen-ejecutivo)
+- [🚀 Módulos del Sistema](#-módulos-del-sistema)
+- [⏱️ Lógica de Validación Horaria](#️-lógica-de-validación-horaria)
 - [🏗️ Arquitectura por Capas](#️-arquitectura-por-capas-n-tier)
-- [📂 Estructura del Proyecto](#-estructura-del-proyecto)
+- [📂 Estructura del Código](#-estructura-del-código)
 - [👥 Equipo de Desarrollo](#-equipo-de-desarrollo)
 
 ---
 
-## ✨ Descripción General
+## 💎 Resumen Ejecutivo
 
-<div style="background: rgba(22, 27, 34, 0.7); border: 1px solid rgba(56, 189, 248, 0.2); padding: 20px; border-radius: 12px; backdrop-filter: blur(10px);">
-
-**Viatic** es una solución robusta de escritorio desarrollada en **Java (Swing / AWT)** bajo el entorno de **Apache NetBeans (ANT)**. Diseñada para automatizar y optimizar el flujo de trabajo corporativo en la asignación, validación horaria, control de gastos y liquidación de viáticos para el personal de campo y viajes de trabajo.
-
-</div>
+> **Viatic** es una solución de software de escritorio de alta precisión desarrollada en **Java (Swing/AWT)** bajo estándares empresariales. Su propósito central es automatizar el registro, control de franjas horarias, asignación de viáticos y liquidaciones corporativas, erradicando por completo los errores de cálculo manual.
 
 ---
 
-## 🎬 Vista Previa del Sistema
-
-<img width="801" height="600" alt="viaticPro" src="https://github.com/user-attachments/assets/a89cc3d4-2626-4678-82ec-7005fd99faa1" />
-
+## 🚀 Módulos del Sistema
 
 <div align="center">
 
-| Módulo Principal | Panel de Control & Operaciones |
-| :---: | :---: |
-| <sub>*Interfaz limpia y navegación fluida mediante atajos y teclado.*</sub> | <sub>*Esquema Maestro-Detalle con validación horaria automática.*</sub> |
-| <img src="https://via.placeholder.com/450x260/0d1117/38BDF8?text=Interfaz+Principal+(Viatic)" width="450px" style="border-radius: 8px; border: 1px solid rgba(56,189,248,0.3);" /> | <img src="https://via.placeholder.com/450x260/0d1117/10B981?text=Panel+Liquidaciones" width="450px" style="border-radius: 8px; border: 1px solid rgba(16,185,129,0.3);" /> |
+| Módulo | Descripción Funcional | Nivel de Acceso |
+| :--- | :--- | :--- |
+| 🛡️ **Seguridad & Login** | Control de autenticación basado en roles de usuario con validación de estados activo/inactivo. | Restringido / Administradores |
+| 👥 **Gestión de Empleados** | Operaciones CRUD completas (Cédula, Nombre, Apellidos, Teléfono, Dirección y Estados). | Operativo |
+| 💰 **Catálogo de Viáticos** | Administración de conceptos por alimentación (Desayunos, Almuerzos y Cenas) con montos base. | Administradores |
+| 🧾 **Liquidación (Maestro-Detalle)** | Registro tipo factura con cálculo de rangos de fechas, montos y justificaciones de campo. | Operativo |
+| 📊 **Reportes & Bitácora** | Informes cruzados por rangos de fechas, filtros por empleado y trazabilidad de operaciones. | General |
 
 </div>
 
 ---
 
-## 🛠️ Características Principales
+<div align="center" style="background: linear-gradient(135deg, rgba(22, 27, 34, 0.85), rgba(13, 17, 23, 0.95)); border: 1px solid rgba(56, 189, 248, 0.3); padding: 25px; border-radius: 16px; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); backdrop-filter: blur(8px);">
 
-| Ícono | Módulo / Característica | Descripción Técnica |
-| :---: | :--- | :--- |
-| 🛡️ | **Seguridad & Accesos** | Control estricto de roles (Administrador y Usuario Normal) condicionados por estados de actividad en el sistema. |
-| 📋 | **Gestión de Empleados** | Operaciones CRUD completas con validación de cédulas, estados activos/inactivos y control en tiempo real. |
-| ⏱️ | **Validación de Tiempos** | Restricciones horarias automatizadas para Desayunos, Almuerzos y Cenas según políticas empresariales. |
-| 🧾 | **Esquema Maestro-Detalle** | Estructura modular inspirada en sistemas de facturación para el desglose y cálculo de liquidaciones. |
-| 📊 | **Reportes Dinámicos** | Generación de informes filtrados por rangos de fechas, empleados específicos y bitácora de operaciones. |
+  <h3 style="color: #38BDF8; margin-top: 0; font-family: 'Fira Code', monospace; letter-spacing: 1px;">
+    ⚡ C O R E &nbsp; D E V &nbsp; T E A M ⚡
+  </h3>
+  
+  <p style="color: #94A3B8; font-size: 14px; margin-bottom: 20px;">
+    Arquitectura, desarrollo de software y control de calidad del sistema.
+  </p>
 
----
+  <table style="border-collapse: collapse; width: 100%; color: #E2E8F0;">
+    <thead>
+      <tr style="border-bottom: 1px solid rgba(56, 189, 248, 0.2);">
+        <th style="padding: 10px; text-align: left;">Desarrollador</th>
+        <th style="padding: 10px; text-align: left;">Rol Asignado</th>
+        <th style="padding: 10px; text-align: center;">GitHub</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+        <td style="padding: 12px; font-weight: bold; color: #38BDF8;">Erick Jasiel López Borge</td>
+        <td style="padding: 12px;">Core, Lógica de Negocio & Arquitectura</td>
+        <td style="padding: 12px; text-align: center;">
+          <a href="https://github.com/ErickLopez-TECH"><img src="https://img.shields.io/badge/GitHub-Profile-181717?style=flat-square&logo=github" alt="GitHub"></a>
+        </td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+        <td style="padding: 12px; font-weight: bold; color: #38BDF8;">Dylan Álvarez</td>
+        <td style="padding: 12px;">Interfaces Gráficas & Módulos</td>
+        <td style="padding: 12px; text-align: center;">
+          <a href="https://github.com/"><img src="https://img.shields.io/badge/GitHub-Profile-181717?style=flat-square&logo=github" alt="GitHub"></a>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding: 12px; font-weight: bold; color: #38BDF8;">David Reyes</td>
+        <td style="padding: 12px;">Soporte Técnico & QA</td>
+        <td style="padding: 12px; text-align: center;">
+          <a href="https://github.com/"><img src="https://img.shields.io/badge/GitHub-Profile-181717?style=flat-square&logo=github" alt="GitHub"></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+## ⏱️ Reglas y Lógica de Validación Horaria
+
+El sistema incorpora validaciones algorítmicas estrictas para la asignación de viáticos alimentarios según los horarios de salida y llegada:
+
+```text
+ ╔════════════╦════════════════════╦════════════════════╗
+ ║  VIÁTICO   ║    HORA SALIDA     ║    HORA LLEGADA    ║
+ ╠════════════╬════════════════════╬════════════════════╣
+ ║  Desayuno  ║    ≤ 07:00 hrs     ║    ≥ 10:00 hrs     ║
+ ║  Almuerzo  ║    ≤ 10:00 hrs     ║    ≥ 14:00 hrs     ║
+ ║  Cena      ║    ≤ 16:00 hrs     ║    ≥ 20:00 hrs     ║
+ ╚════════════╩════════════════════╩════════════════════╝
 
 ## 🏗️ Arquitectura por Capas (N-Tier)
 
@@ -85,3 +131,7 @@ ViaticPro/
     ├── Logica/         # Reglas de negocio, validaciones y controladores de operaciones
     ├── Presentacion/   # Interfaz gráfica de usuario (JFrame y JPanel Forms)
     └── Imagenes/       # Recursos gráficos, iconos y multimedia del sistema
+
+
+
+
