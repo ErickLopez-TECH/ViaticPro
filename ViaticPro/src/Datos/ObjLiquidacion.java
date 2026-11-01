@@ -13,16 +13,25 @@ public class ObjLiquidacion {
     private Date fechaInicial;
     private Date fechaFinal;
     private String justificacion; //--Una por liquidación
+    private String horaSalida;
+    private String horaLLegada;
     private ArrayList<ObjDetalleViatico> detalle = new ArrayList<>(); //--Las líneas del maestro
 
     public ObjLiquidacion(int consecutivo, String identificacion,
-            Date fechaInicial, Date fechaFinal, String justificacion) {
+            Date fechaInicial, Date fechaFinal, String justificacion,String horaSalida,String horaLlegada) {
         this.consecutivo = consecutivo;
         this.identificacion = identificacion;
         this.fechaInicial = fechaInicial;
         this.fechaFinal = fechaFinal;
         this.justificacion = justificacion;
+        this.horaSalida = horaSalida;
+        this.horaLLegada = horaLlegada;
     }
+
+    public ObjLiquidacion() {
+    }
+    
+    
 
     //--Identificador 
     
@@ -66,6 +75,23 @@ public class ObjLiquidacion {
         this.justificacion = justificacion;
     }
 
+    public String getHoraLLegada() {
+        return horaLLegada;
+    }
+
+    public void setHoraLLegada(String horaLLegada) {
+        this.horaLLegada = horaLLegada;
+    }
+
+    public String getHoraSalida() {
+        return horaSalida;
+    }
+
+    public void setHoraSalida(String horaSalida) {
+        this.horaSalida = horaSalida;
+    }
+
+    
     //--Manejo del detalle
     public void agregarLinea(ObjDetalleViatico linea) {
         detalle.add(linea);

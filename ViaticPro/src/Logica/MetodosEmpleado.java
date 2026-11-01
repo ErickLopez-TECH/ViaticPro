@@ -99,6 +99,8 @@ public class MetodosEmpleado {
         return activos;
     }
     
+    
+    
    /* public DefaultTableModel filtrarBitacora(String usuarioFiltro, String fechaIni, String fechaFin) {
         String[] columnas = {"Viatico", "Nombre", "Sección", "Movimiento", "Fecha"};
         DefaultTableModel modelo = new DefaultTableModel(columnas, 0);

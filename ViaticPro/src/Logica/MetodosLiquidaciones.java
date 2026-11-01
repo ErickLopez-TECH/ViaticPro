@@ -4,11 +4,12 @@ import Datos.EstructuraLiquidacion;
 import Datos.ObjLiquidacion;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.stream.Gatherer;
 
 
 public class MetodosLiquidaciones {
 
-    private EstructuraLiquidacion almacen;
+    private EstructuraLiquidacion almacen = new EstructuraLiquidacion();
 
     public MetodosLiquidaciones() {
     }
@@ -74,14 +75,86 @@ public class MetodosLiquidaciones {
     //--Liquidaciones de un empleado
     public ArrayList<ObjLiquidacion> filtrarPorIdentificacion(String identificacion) {
         ArrayList<ObjLiquidacion> resultado = new ArrayList<>();
-        if (almacen == null) {
-            return resultado;
-        }
-        for (ObjLiquidacion liq : almacen.listar()) {
-            if (liq.getIdentificacion().equals(identificacion)) {
+
+        
+        
+
+        
+        ArrayList<ObjLiquidacion> listaGeneral = almacen.listar();
+
+        
+        for (int i = 0; i < listaGeneral.size(); i++) {
+            ObjLiquidacion liq = listaGeneral.get(i);
+
+            
+            if (liq.getIdentificacion().trim().equals(identificacion)) {
                 resultado.add(liq);
             }
         }
+
         return resultado;
+    }
+    
+    public int buscarLiquidacion(int id){
+        int resultado = -1;
+        
+        ArrayList<ObjLiquidacion> miLiqui = almacen.listar();
+        
+        //buscamos entre la lsita(recorrer)
+        for (int i = 0; i < miLiqui.size(); i++) {
+            //condicionamos la bsuqueda
+            if(miLiqui.get(i).getConsecutivo()== id){
+                
+                resultado = i;
+            }
+        }
+        return resultado;
+    }
+    
+    //validaciones
+    public int validarAlimentacion(String hSalida, String hLlegada, String tipoViatico) {
+        String[] parteSalida = hSalida.split(":");
+        String[] parteLlegada = hLlegada.split(":");
+
+        int horaS = Integer.parseInt(parteSalida[0]);
+        int minutosS = Integer.parseInt(parteSalida[1]);
+        int horaLl = Integer.parseInt(parteLlegada[0]);
+        int minutosLl = Integer.parseInt(parteLlegada[1]);
+
+        
+        int totalMinutosSalida = (horaS * 60) + minutosS;
+        int totalMinutosLlegada = (horaLl * 60) + minutosLl;
+
+        if (totalMinutosSalida >= totalMinutosLlegada) {
+            return 4; 
+        }
+
+       
+        if (tipoViatico.equalsIgnoreCase("Desayuno")) {
+            boolean salidaDesayuno = (horaS < 7) || (horaS == 7 && minutosS == 0);
+            boolean llegadaDesayuno = (horaLl > 10) || (horaLl == 10 && minutosLl >= 0);
+
+            if (!(salidaDesayuno && llegadaDesayuno)) {
+                return 1; // No cumple desayuno
+            }
+        } 
+        else if (tipoViatico.equalsIgnoreCase("Almuerzo")) {
+            boolean salidaAlmuer = (horaS < 10) || (horaS == 10 && minutosS == 0);
+            boolean llegadaALmuer = (horaLl > 14) || (horaLl == 14 && minutosLl >= 0);
+
+            if (!(salidaAlmuer && llegadaALmuer)) {
+                return 2; // No cumple almuerzo
+            }
+        } 
+        else if (tipoViatico.equalsIgnoreCase("Cena")) {
+            boolean salidaCena = (horaS < 16) || (horaS == 16 && minutosS == 0);
+            boolean llegadaCena = (horaLl > 20) || (horaLl == 20 && minutosLl >= 0);
+
+            if (!(salidaCena && llegadaCena)) {
+                return 3; // No cumple cena
+            }
+        }
+
+        return 0; 
     }
 }

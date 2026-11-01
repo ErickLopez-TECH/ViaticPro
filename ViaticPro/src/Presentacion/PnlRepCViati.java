@@ -4,10 +4,19 @@
  */
 package Presentacion;
 import Datos.EstructuraBitacora;
+import Datos.EstructuraLiquidacion;
 import Datos.Estructuras;
+import Datos.ObjDetalleViatico;
 import Datos.ObjEmpleado;
+import Datos.ObjLiquidacion;
 import Logica.MetodosEmpleado;
+import Logica.MetodosLiquidaciones;
+import java.awt.event.KeyEvent;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,7 +28,9 @@ public class PnlRepCViati extends javax.swing.JPanel {
      * Creates new form PnlRepCViati
      */
     Estructuras almacen = new Estructuras();
-    MetodosEmpleado Metodos = new MetodosEmpleado();
+    EstructuraLiquidacion almacenLiqui = new EstructuraLiquidacion();
+    MetodosEmpleado MetodosE = new MetodosEmpleado();
+    MetodosLiquidaciones metodosL = new MetodosLiquidaciones();
     public PnlRepCViati() {
         initComponents();
     }
@@ -33,74 +44,92 @@ public class PnlRepCViati extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblTitulo = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblViaticos = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
+        lblTotal = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
 
-        lblTitulo.setText("Reportes de viaticos por Usuario");
+        setBackground(new java.awt.Color(204, 255, 229));
 
+        txtCedula.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCedulaFocusLost(evt);
+            }
+        });
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyPressed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Cedula:");
 
         txtNombre.setEditable(false);
 
-        btnBuscar.setText("...");
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btnBuscar.addActionListener(this::btnBuscarActionPerformed);
 
+        tblViaticos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         tblViaticos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Viatico", "Fechas", "Montos"
             }
         ));
         jScrollPane1.setViewportView(tblViaticos);
+        if (tblViaticos.getColumnModel().getColumnCount() > 0) {
+            tblViaticos.getColumnModel().getColumn(2).setResizable(false);
+        }
 
-        jLabel2.setText("Total:");
+        lblTotal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTotal.setText("Total:");
+
+        jPanel1.setBackground(new java.awt.Color(153, 255, 204));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102)));
+
+        lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(0, 102, 102));
+        lblTitulo.setText("Reportes de viaticos por Usuario");
+        jPanel1.add(lblTitulo);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(211, 211, 211)
-                        .addComponent(lblTitulo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnBuscar)))
+                .addGap(109, 109, 109)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnBuscar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 54, Short.MAX_VALUE)
+                .addGap(0, 92, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(lblTotal)
                         .addGap(122, 122, 122))))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(lblTitulo)
-                .addGap(46, 46, 46)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -109,32 +138,103 @@ public class PnlRepCViati extends javax.swing.JPanel {
                 .addGap(67, 67, 67)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addComponent(lblTotal)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        String cedula = txtCedula.getText().trim();
+        
+        if (!cedula.isEmpty()) {
+            ObjEmpleado miEmpleado = MetodosE.buscarCedulaObj(cedula);
+        
+            if(miEmpleado != null){
+                txtNombre.setText(miEmpleado.getNombre() + " "+ miEmpleado.getApellido1());
+
+                rellenarTable();
+            }else{
+                JOptionPane.showMessageDialog(this, "Empleado no registrado");
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Ingresa datos antes de buscar","Campo Vacio",JOptionPane.INFORMATION_MESSAGE);
+            txtCedula.requestFocus();
+        }
+        
+        
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void rellenarTable(){
+        DefaultTableModel modelo = (DefaultTableModel) tblViaticos.getModel();
+        
+        ArrayList<ObjLiquidacion> listaLiqui = metodosL.filtrarPorIdentificacion(txtCedula.getText().trim());
+        
+        if(listaLiqui == null){
+            return;
+        }
+        double totalizado = 0.0;
+        
+         System.out.println("Tamano " + listaLiqui );
+        for (int i = 0; i < listaLiqui.size(); i++) {
+            ObjLiquidacion liquiObj = listaLiqui.get(i);
+            
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            
+            String fechaIn = formato.format(liquiObj.getFechaInicial()) + " - " + formato.format(liquiObj.getFechaFinal());
+            
+            
+            ArrayList<ObjDetalleViatico> listaDetalle = liquiObj.getDetalle();
+            for (int j = 0; j < listaDetalle.size(); j++) {
+                ObjDetalleViatico detelleObj = listaDetalle.get(j);
+                
+                
+                Object[] fila = {
+                   detelleObj.getTipoViatico(),
+                    fechaIn,
+                   detelleObj.getMonto()
+                   
+                };
+                
+                totalizado += detelleObj.getMonto();
+                lblTotal.setText("Total: "+ totalizado);
+                modelo.addRow(fila);
+            }
+            
+        }
+        
+        
+        
+    }
+    private void txtCedulaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCedulaFocusLost
         // TODO add your handling code here:
         String cedula = txtCedula.getText();
         
-        ObjEmpleado miEmpleado = Metodos.buscarCedulaObj(cedula);
+        ObjEmpleado miEmpleado = MetodosE.buscarCedulaObj(cedula);
         
         if(miEmpleado != null){
             txtNombre.setText(miEmpleado.getNombre() + " "+ miEmpleado.getApellido1());
         }else{
-            
+            JOptionPane.showMessageDialog(this, "Empleado no registrado");
         }
-        
-    }//GEN-LAST:event_btnBuscarActionPerformed
+    }//GEN-LAST:event_txtCedulaFocusLost
+
+    private void txtCedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            btnBuscar.doClick();
+        }
+    }//GEN-LAST:event_txtCedulaKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblTotal;
     private javax.swing.JTable tblViaticos;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtNombre;

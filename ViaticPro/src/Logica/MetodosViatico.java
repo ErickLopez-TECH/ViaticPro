@@ -49,6 +49,8 @@ public class MetodosViatico {
     }
     
     
+    
+    
     public ObjViatico buscarviaticoObj(int id){
         ObjViatico miViaticoObj = null;
         
