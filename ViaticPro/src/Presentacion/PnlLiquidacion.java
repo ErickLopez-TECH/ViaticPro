@@ -13,6 +13,7 @@ import Datos.ObjViatico;
 import Logica.MetodosBitacora;
 import Logica.MetodosEmpleado;
 import Logica.MetodosViatico;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -215,6 +216,8 @@ public class PnlLiquidacion extends javax.swing.JPanel {
         lblMinutos = new javax.swing.JLabel();
         SpnMinutosArri = new com.toedter.components.JSpinField();
         lblMinutos1 = new javax.swing.JLabel();
+        chkEditar = new javax.swing.JCheckBox();
+        txtOcasionLoss = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(639, 562));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -280,6 +283,7 @@ public class PnlLiquidacion extends javax.swing.JPanel {
 
         btnModificar.setBackground(new java.awt.Color(204, 255, 204));
         btnModificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit.png"))); // NOI18N
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -287,7 +291,7 @@ public class PnlLiquidacion extends javax.swing.JPanel {
             }
         });
         pnlConsulta.add(btnModificar);
-        btnModificar.setBounds(510, 240, 100, 27);
+        btnModificar.setBounds(480, 240, 130, 30);
 
         btnEliminar.setBackground(new java.awt.Color(255, 153, 153));
         btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -299,7 +303,7 @@ public class PnlLiquidacion extends javax.swing.JPanel {
             }
         });
         pnlConsulta.add(btnEliminar);
-        btnEliminar.setBounds(380, 240, 120, 28);
+        btnEliminar.setBounds(350, 240, 120, 28);
 
         tabs.addTab("Consultar liquidaciones", pnlConsulta);
 
@@ -322,22 +326,45 @@ public class PnlLiquidacion extends javax.swing.JPanel {
                 txtIdentificacionFocusLost(evt);
             }
         });
+        txtIdentificacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtIdentificacionKeyPressed(evt);
+            }
+        });
         pnlNueva.add(txtIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 120, 24));
         pnlNueva.add(txtNombreE, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, 110, 24));
 
         lblInicial.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblInicial.setText("Fecha inicial:");
         pnlNueva.add(lblInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 50, 110, 24));
+
+        dchInicial.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                dchInicialKeyPressed(evt);
+            }
+        });
         pnlNueva.add(dchInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 120, 24));
 
         lblFinal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblFinal.setText("Fecha final:");
         pnlNueva.add(lblFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 90, 24));
+
+        dchFinal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                dchFinalKeyPressed(evt);
+            }
+        });
         pnlNueva.add(dchFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 110, 24));
 
         lblJust.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblJust.setText("Justificación:");
         pnlNueva.add(lblJust, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 85, 110, 24));
+
+        txtJustificacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtJustificacionKeyPressed(evt);
+            }
+        });
         pnlNueva.add(txtJustificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 85, 485, 24));
         pnlNueva.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 620, 10));
 
@@ -347,18 +374,21 @@ public class PnlLiquidacion extends javax.swing.JPanel {
 
         lblMonto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblMonto.setText("Monto asignado:");
-        pnlNueva.add(lblMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 120, 24));
-        pnlNueva.add(txtMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, 120, 24));
+        pnlNueva.add(lblMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 120, 24));
+
+        txtMonto.setEditable(false);
+        pnlNueva.add(txtMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 120, 24));
 
         btnAgregar.setBackground(new java.awt.Color(204, 255, 204));
         btnAgregar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/image.png"))); // NOI18N
         btnAgregar.setText("Agregar línea");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
             }
         });
-        pnlNueva.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 130, -1));
+        pnlNueva.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, 160, -1));
 
         tblLineas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         tblLineas.setModel(new javax.swing.table.DefaultTableModel(
@@ -411,6 +441,8 @@ public class PnlLiquidacion extends javax.swing.JPanel {
             }
         });
         pnlNueva.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 470, 210, -1));
+
+        txtNombreViati.setEditable(false);
         pnlNueva.add(txtNombreViati, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 160, -1));
         pnlNueva.add(spnHoraSal, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 40, 20));
 
@@ -428,6 +460,16 @@ public class PnlLiquidacion extends javax.swing.JPanel {
                 txtIdViaticoFocusLost(evt);
             }
         });
+        txtIdViatico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdViaticoActionPerformed(evt);
+            }
+        });
+        txtIdViatico.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtIdViaticoKeyPressed(evt);
+            }
+        });
         pnlNueva.add(txtIdViatico, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 120, -1));
         pnlNueva.add(SpnMinutosSali, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 50, 20));
 
@@ -439,6 +481,21 @@ public class PnlLiquidacion extends javax.swing.JPanel {
         lblMinutos1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblMinutos1.setText("Minutos:");
         pnlNueva.add(lblMinutos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, -1, -1));
+
+        chkEditar.setText("Editar");
+        chkEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkEditarActionPerformed(evt);
+            }
+        });
+        pnlNueva.add(chkEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, -1, -1));
+
+        txtOcasionLoss.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtOcasionLossKeyPressed(evt);
+            }
+        });
+        pnlNueva.add(txtOcasionLoss, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 0, -1));
 
         tabs.addTab("Nueva liquidación", pnlNueva);
 
@@ -598,6 +655,7 @@ public class PnlLiquidacion extends javax.swing.JPanel {
                 txtIdViatico.setText("");
             }else{
                 txtNombreViati.setText(viatico.getNombre());
+                txtMonto.setText(String.valueOf(viatico.getMonto()));
             }
         }else{
             aviso("Este viatico no esta registrado");
@@ -674,6 +732,63 @@ public class PnlLiquidacion extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnModificarActionPerformed
 
+    private void txtIdentificacionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdentificacionKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            dchInicial.getCalendarButton().doClick();
+        }
+    }//GEN-LAST:event_txtIdentificacionKeyPressed
+
+    private void dchInicialKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dchInicialKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            dchFinal.getCalendarButton().doClick();
+        }
+    }//GEN-LAST:event_dchInicialKeyPressed
+
+    private void dchFinalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dchFinalKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            // Opción 1: Manda el foco directamente al JSpinField
+            txtJustificacion.requestFocus();
+        }
+    }//GEN-LAST:event_dchFinalKeyPressed
+
+    private void txtJustificacionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtJustificacionKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtIdViatico.requestFocus();
+        }
+    }//GEN-LAST:event_txtJustificacionKeyPressed
+
+    private void txtIdViaticoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdViaticoKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtOcasionLoss.requestFocus();
+        }
+    }//GEN-LAST:event_txtIdViaticoKeyPressed
+
+    private void chkEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkEditarActionPerformed
+        // TODO add your handling code here:
+        if(chkEditar.isSelected()){
+            txtMonto.setEditable(true);
+        }else{
+            txtMonto.setEditable(false);
+        }
+    }//GEN-LAST:event_chkEditarActionPerformed
+
+    private void txtIdViaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdViaticoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtIdViaticoActionPerformed
+
+    private void txtOcasionLossKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtOcasionLossKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            btnAgregar.doClick();
+        }
+    }//GEN-LAST:event_txtOcasionLossKeyPressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.components.JSpinField SpnLlegada;
     private com.toedter.components.JSpinField SpnMinutosArri;
@@ -683,6 +798,7 @@ public class PnlLiquidacion extends javax.swing.JPanel {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnQuitar;
+    private javax.swing.JCheckBox chkEditar;
     private com.toedter.calendar.JDateChooser dchFinal;
     private com.toedter.calendar.JDateChooser dchInicial;
     private javax.swing.JScrollPane jScrollPane1;
@@ -718,5 +834,6 @@ public class PnlLiquidacion extends javax.swing.JPanel {
     private javax.swing.JTextField txtNombreE;
     private javax.swing.JTextField txtNombreViati;
     private javax.swing.JTextField txtNumero;
+    private javax.swing.JTextField txtOcasionLoss;
     // End of variables declaration//GEN-END:variables
 }

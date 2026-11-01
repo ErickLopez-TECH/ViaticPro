@@ -11,6 +11,7 @@ import Datos.ObjEmpleado;
 import Datos.ObjLiquidacion;
 import Logica.MetodosEmpleado;
 import Logica.MetodosLiquidaciones;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -58,6 +59,11 @@ public class PnlRepCViati extends javax.swing.JPanel {
         txtCedula.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtCedulaFocusLost(evt);
+            }
+        });
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyPressed(evt);
             }
         });
 
@@ -140,22 +146,23 @@ public class PnlRepCViati extends javax.swing.JPanel {
     
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        String cedula = txtCedula.getText();
+        String cedula = txtCedula.getText().trim();
         
-        if (cedula.equals("")) {
-            JOptionPane.showMessageDialog(this, "Ingrese una cedula para poder Bucar");
-            txtCedula.requestFocus();
-            return;
-        }
-        ObjEmpleado miEmpleado = MetodosE.buscarCedulaObj(cedula);
+        if (!cedula.isEmpty()) {
+            ObjEmpleado miEmpleado = MetodosE.buscarCedulaObj(cedula);
         
-        if(miEmpleado != null){
-            txtNombre.setText(miEmpleado.getNombre() + " "+ miEmpleado.getApellido1());
-           
-            rellenarTable();
+            if(miEmpleado != null){
+                txtNombre.setText(miEmpleado.getNombre() + " "+ miEmpleado.getApellido1());
+
+                rellenarTable();
+            }else{
+                JOptionPane.showMessageDialog(this, "Empleado no registrado");
+            }
         }else{
-            JOptionPane.showMessageDialog(this, "Empleado no registrado");
+            JOptionPane.showMessageDialog(this, "Ingresa datos antes de buscar","Campo Vacio",JOptionPane.INFORMATION_MESSAGE);
+            txtCedula.requestFocus();
         }
+        
         
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -212,6 +219,13 @@ public class PnlRepCViati extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Empleado no registrado");
         }
     }//GEN-LAST:event_txtCedulaFocusLost
+
+    private void txtCedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            btnBuscar.doClick();
+        }
+    }//GEN-LAST:event_txtCedulaKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

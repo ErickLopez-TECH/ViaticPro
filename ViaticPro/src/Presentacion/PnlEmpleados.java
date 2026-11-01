@@ -11,6 +11,7 @@ import Datos.ObjEmpleado;
 import Datos.ObjUsuario;
 import Logica.MetodosBitacora;
 import Logica.MetodosEmpleado;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -121,6 +122,12 @@ public class PnlEmpleados extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Cédula:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, -1, -1));
+
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyPressed(evt);
+            }
+        });
         add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 220, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -134,16 +141,34 @@ public class PnlEmpleados extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Nombre:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, -1, -1));
+
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombreKeyPressed(evt);
+            }
+        });
         add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 170, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Apellido 1:");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
+
+        txtApellido1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtApellido1KeyPressed(evt);
+            }
+        });
         add(txtApellido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 160, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("Apellido 2:");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, -1, -1));
+
+        txtApellido2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtApellido2KeyPressed(evt);
+            }
+        });
         add(txtApellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 170, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -153,7 +178,19 @@ public class PnlEmpleados extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setText("Dirección:");
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, -1, -1));
+
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyPressed(evt);
+            }
+        });
         add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 160, -1));
+
+        txtDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtDireccionKeyPressed(evt);
+            }
+        });
         add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 220, 170, -1));
 
         btnGuardar.setBackground(new java.awt.Color(204, 255, 204));
@@ -334,6 +371,48 @@ public class PnlEmpleados extends javax.swing.JPanel {
             cargarEmpleado(almacen.listarEmpleados().get(fila));
         }
     }//GEN-LAST:event_tblEmpleadosMouseClicked
+
+    private void txtCedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtNombre.requestFocus();
+        }
+    }//GEN-LAST:event_txtCedulaKeyPressed
+
+    private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtApellido1.requestFocus();
+        }
+    }//GEN-LAST:event_txtNombreKeyPressed
+
+    private void txtApellido1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellido1KeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtApellido2.requestFocus();
+        }
+    }//GEN-LAST:event_txtApellido1KeyPressed
+
+    private void txtApellido2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellido2KeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtTelefono.requestFocus();
+        }
+    }//GEN-LAST:event_txtApellido2KeyPressed
+
+    private void txtDireccionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            btnGuardar.doClick();
+        }
+    }//GEN-LAST:event_txtDireccionKeyPressed
+
+    private void txtTelefonoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtDireccion.requestFocus();
+        }
+    }//GEN-LAST:event_txtTelefonoKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

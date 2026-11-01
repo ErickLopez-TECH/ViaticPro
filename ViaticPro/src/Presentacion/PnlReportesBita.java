@@ -126,6 +126,12 @@ public class PnlReportesBita extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tblViaticos);
 
+        dtcFechEnd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                dtcFechEndKeyPressed(evt);
+            }
+        });
+
         lblIndicaciones.setText("Escoja El rango de fecha necesitado para filtrar");
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 204));
@@ -265,7 +271,17 @@ public class PnlReportesBita extends javax.swing.JPanel {
     private void cmbNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbNombreKeyPressed
         // TODO add your handling code here:
      
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            dtcFechIn.getCalendarButton().doClick();
+        }
     }//GEN-LAST:event_cmbNombreKeyPressed
+
+    private void dtcFechEndKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dtcFechEndKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            dtcFechIn.getCalendarButton().doClick();
+        }
+    }//GEN-LAST:event_dtcFechEndKeyPressed
 
     
     
