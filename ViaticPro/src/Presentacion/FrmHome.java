@@ -17,15 +17,14 @@ import org.netbeans.lib.awtextra.AbsoluteConstraints;
  * @author jdavi
  */
 public class FrmHome extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmHome.class.getName());
     static boolean btnPress = false;
     /**
      * Creates new form FrmHome
      */
-    
     private ObjUsuario usuarioActual;
-    
+
     public FrmHome(ObjUsuario usuario) {
         initComponents();
         this.usuarioActual = usuario;
@@ -346,14 +345,14 @@ public class FrmHome extends javax.swing.JFrame {
         // TODO add your handling code here:
         pnlSubReportes.setVisible(false);
         mostrarPanel(new PnlViaticos(usuarioActual));
-        
+
     }//GEN-LAST:event_btnViaticosActionPerformed
 
     private void btnLiquidacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLiquidacionActionPerformed
         // TODO add your handling code here:
         pnlSubReportes.setVisible(false);
         mostrarPanel(new PnlLiquidacion(usuarioActual));
-        
+
     }//GEN-LAST:event_btnLiquidacionActionPerformed
 
     private void btnCargaDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargaDatosActionPerformed
@@ -399,8 +398,7 @@ public class FrmHome extends javax.swing.JFrame {
     private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
         // TODO add your handling code here:
         pnlSubReportes.setVisible(false);
-        // mostrarPanel(new PnlUsuarios(usuarioActual));
-        JOptionPane.showMessageDialog(null, "Módulo en construcción");
+        mostrarPanel(new PnlUsuarios());
     }//GEN-LAST:event_btnUsuariosActionPerformed
 
     private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
@@ -413,21 +411,21 @@ public class FrmHome extends javax.swing.JFrame {
         // TODO add your handling code here:
         pnlSubReportes.setVisible(false);
         mostrarPanel(new PnlRepCFech());
-        
+
     }//GEN-LAST:event_btnRepViaticosFechaActionPerformed
 
     private void btnRepViaticosEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepViaticosEmpActionPerformed
         // TODO add your handling code here:
         pnlSubReportes.setVisible(false);
         mostrarPanel(new PnlRepCViati());
-        
+
     }//GEN-LAST:event_btnRepViaticosEmpActionPerformed
 
     private void btnRepMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepMovimientosActionPerformed
         // TODO add your handling code here:
         pnlSubReportes.setVisible(false);
         mostrarPanel(new PnlReportesBita());
-        
+
     }//GEN-LAST:event_btnRepMovimientosActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -449,10 +447,9 @@ public class FrmHome extends javax.swing.JFrame {
         pnlContenido.add(panel, new AbsoluteConstraints(0, 0, 650, 540));
         pnlContenido.revalidate();
         pnlContenido.repaint();
-    
+
     }
-    
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -478,7 +475,7 @@ public class FrmHome extends javax.swing.JFrame {
             }
         });
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCargaDatos;
