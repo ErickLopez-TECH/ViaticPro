@@ -648,7 +648,7 @@ public class PnlLiquidacion extends javax.swing.JPanel {
             id = Integer.parseInt(txtIdViatico.getText());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Por favor Digite el id del viatico");
-            txtIdViatico.requestFocus();
+            txtNombreViati.setText("");
             return;
         }
         ObjViatico viatico = metodosViaticos.buscarviaticoObj(id);
