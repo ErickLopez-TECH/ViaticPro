@@ -113,6 +113,7 @@ public class MetodosLiquidaciones {
     
     //validaciones
     public int validarAlimentacion(String hSalida, String hLlegada, String tipoViatico) {
+        //1--> desayuno, 2--> almuerzo, 3-->cena, 4--> horaSalida >= llegada,5-->Supera los limites de 24 o 60 minutos
         String[] parteSalida = hSalida.split(":");
         String[] parteLlegada = hLlegada.split(":");
 
@@ -153,6 +154,14 @@ public class MetodosLiquidaciones {
             if (!(salidaCena && llegadaCena)) {
                 return 3; // No cumple cena
             }
+        }
+        
+        if((horaS > 24 || horaS<0)||(horaLl>24 || horaLl <1 )){
+            return 5;
+        }
+        
+        if ((minutosS >60 || minutosS <0)||(minutosLl>60 || minutosLl <0)) {
+            return 5;
         }
 
         return 0; 

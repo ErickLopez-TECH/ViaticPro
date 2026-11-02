@@ -116,11 +116,19 @@ public class FrmLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 120, 40));
+
+        txtClave.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtClaveKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 342, 340, 30));
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoLisoTurquesa.png"))); // NOI18N
         lblFondo.setText(".");
-        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
+        lblFondo.setMaximumSize(new java.awt.Dimension(382, 518));
+        lblFondo.setMinimumSize(new java.awt.Dimension(382, 518));
+        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, -1));
 
         getAccessibleContext().setAccessibleDescription("");
 
@@ -198,6 +206,13 @@ public class FrmLogin extends javax.swing.JFrame {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void txtClaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtClaveKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnOk.doClick();
+        }
+    }//GEN-LAST:event_txtClaveKeyPressed
 
     /**
      * @param args the command line arguments

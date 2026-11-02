@@ -329,10 +329,10 @@ public class FrmHome extends javax.swing.JFrame {
         pnlSubReportes.setVisible(false);
 
         // Restricción por rol: solo el administrador (0) usa estas opciones
-     /*   if (usuarioActual.getRol() != 0){
-            btnUsuarios.setEnabled(false);
-            btnCargaDatos.setEnabled(false);
-        }*/
+        if (usuarioActual.getRol() != 0){
+            btnUsuarios.setVisible(false);
+            btnCargaDatos.setVisible(false);
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void btnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadosActionPerformed
