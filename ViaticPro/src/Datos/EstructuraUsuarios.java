@@ -43,18 +43,28 @@ public class EstructuraUsuarios {
 
     //--Mostrar en la tabla
     public DefaultTableModel mostrarUsuarios() {
-        String[] titulos = {"Id", "Nombre usuario", "Nombre", "Identificación",
+        String[] titulos = {"Id", "Usuario", "Nombre Completo", "Cédula",
             "Rol", "Estado"};
         DefaultTableModel modelo = new DefaultTableModel(titulos, 0);
 
         for (int i = 0; i < listaUsuarios.size(); i++) {
+            
+            String rol = "Administrador";
+            if (listaUsuarios.get(i).getRol() == 1) {
+                rol = "Normal";
+            }
+
+            String estado = "Inactivo";
+            if (listaUsuarios.get(i).getEstado() == 1) {
+                estado = "Activo";
+            }
             String[] fila = {
                 String.valueOf(listaUsuarios.get(i).getId()),
                 listaUsuarios.get(i).getNomUsuario(),
                 listaUsuarios.get(i).getNombreCompleto(),
                 listaUsuarios.get(i).getIdentificacion(),
-                String.valueOf(listaUsuarios.get(i).getRol()),
-                String.valueOf(listaUsuarios.get(i).getEstado())
+                rol,
+                estado
             };
             modelo.addRow(fila);
         }

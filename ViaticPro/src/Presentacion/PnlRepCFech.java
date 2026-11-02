@@ -4,6 +4,16 @@
  */
 package Presentacion;
 
+import Datos.ObjDetalleViatico;
+import Datos.ObjEmpleado;
+import Datos.ObjLiquidacion;
+import Logica.MetodosEmpleado;
+import Logica.MetodosLiquidaciones;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author triamus
@@ -15,7 +25,10 @@ public class PnlRepCFech extends javax.swing.JPanel {
      */
     public PnlRepCFech() {
         initComponents();
+
     }
+    MetodosLiquidaciones metodosLiq = new MetodosLiquidaciones();
+    MetodosEmpleado misMetodos = new MetodosEmpleado();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,30 +39,168 @@ public class PnlRepCFech extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlTitulo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        lblFechIn = new javax.swing.JLabel();
+        dtcFechIn = new com.toedter.calendar.JDateChooser();
+        lblFechFin = new javax.swing.JLabel();
+        dtcFechFin = new com.toedter.calendar.JDateChooser();
+        btnFiltrar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblReporte = new javax.swing.JTable();
+        lblTotal = new javax.swing.JLabel();
 
-        jLabel1.setText("Pruebas");
+        setBackground(new java.awt.Color(204, 255, 229));
+        setMinimumSize(new java.awt.Dimension(640, 540));
+        setPreferredSize(new java.awt.Dimension(640, 540));
+
+        pnlTitulo.setBackground(new java.awt.Color(153, 255, 204));
+        pnlTitulo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102)));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel1.setText("Viáticos por Fecha");
+
+        javax.swing.GroupLayout pnlTituloLayout = new javax.swing.GroupLayout(pnlTitulo);
+        pnlTitulo.setLayout(pnlTituloLayout);
+        pnlTituloLayout.setHorizontalGroup(
+            pnlTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTituloLayout.createSequentialGroup()
+                .addGap(224, 224, 224)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(230, Short.MAX_VALUE))
+        );
+        pnlTituloLayout.setVerticalGroup(
+            pnlTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTituloLayout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        lblFechIn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblFechIn.setForeground(new java.awt.Color(0, 0, 0));
+        lblFechIn.setText("Fecha Inicial:");
+
+        lblFechFin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblFechFin.setForeground(new java.awt.Color(0, 0, 0));
+        lblFechFin.setText("Fecha Final:");
+
+        btnFiltrar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
+        btnFiltrar.setText("Filtrar");
+        btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltrarActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setViewportView(tblReporte);
+
+        lblTotal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTotal.setForeground(new java.awt.Color(0, 0, 0));
+        lblTotal.setText("Total: 0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(152, 152, 152)
-                .addComponent(jLabel1)
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addComponent(lblFechIn)
+                .addGap(18, 18, 18)
+                .addComponent(dtcFechIn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(lblFechFin)
+                .addGap(18, 18, 18)
+                .addComponent(dtcFechFin, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTotal)
+                .addGap(101, 101, 101))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(243, 243, 243)
+                .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel1)
-                .addContainerGap(249, Short.MAX_VALUE))
+                .addComponent(pnlTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblFechIn)
+                    .addComponent(lblFechFin)
+                    .addComponent(dtcFechFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dtcFechIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(lblTotal)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
+        // TODO add your handling code here:
+
+        if (dtcFechIn.getDate() == null || dtcFechFin.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Datos Incompletos",
+                    "Aviso Importante", JOptionPane.WARNING_MESSAGE);
+        } else {
+            //--Liquidaciones dentro del rango de fechas
+            ArrayList<ObjLiquidacion> misLiquidaciones
+                    = metodosLiq.filtrarPorFechas(dtcFechIn.getDate(), dtcFechFin.getDate());
+
+            SimpleDateFormat formatoVer = new SimpleDateFormat("dd-MM-yyyy");
+            String[] titulos = {"Empleado", "Fecha", "Viático", "Monto"};
+            DefaultTableModel modelo = new DefaultTableModel(titulos, 0);
+            double total = 0;
+
+            for (int i = 0; i < misLiquidaciones.size(); i++) {
+                ObjLiquidacion miLiquidacion = misLiquidaciones.get(i);
+
+                //--Nombre del empleado a partir de su cédula
+                String empleado = miLiquidacion.getIdentificacion();
+                ObjEmpleado miEmpleado = misMetodos.buscarCedulaObj(miLiquidacion.getIdentificacion());
+                if (miEmpleado != null) {
+                    empleado = miEmpleado.getNombre() + " " + miEmpleado.getApellido1();
+                }
+
+                //--Una fila por cada viático de la liquidación
+                ArrayList<ObjDetalleViatico> miDetalle = miLiquidacion.getDetalle();
+                for (int j = 0; j < miDetalle.size(); j++) {
+                    String[] fila = {
+                        empleado,
+                        formatoVer.format(miLiquidacion.getFechaInicial()),
+                        miDetalle.get(j).getTipoViatico(),
+                        String.valueOf(miDetalle.get(j).getMonto())
+                    };
+                    modelo.addRow(fila);
+                    total = total + miDetalle.get(j).getMonto();
+                }
+            }
+            tblReporte.setModel(modelo);
+            lblTotal.setText("Total: " + total);
+        }
+    }//GEN-LAST:event_btnFiltrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFiltrar;
+    private com.toedter.calendar.JDateChooser dtcFechFin;
+    private com.toedter.calendar.JDateChooser dtcFechIn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblFechFin;
+    private javax.swing.JLabel lblFechIn;
+    private javax.swing.JLabel lblTotal;
+    private javax.swing.JPanel pnlTitulo;
+    private javax.swing.JTable tblReporte;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,8 +4,7 @@ import Datos.EstructuraLiquidacion;
 import Datos.ObjLiquidacion;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.stream.Gatherer;
-
+import java.text.SimpleDateFormat;
 
 public class MetodosLiquidaciones {
 
@@ -76,17 +75,11 @@ public class MetodosLiquidaciones {
     public ArrayList<ObjLiquidacion> filtrarPorIdentificacion(String identificacion) {
         ArrayList<ObjLiquidacion> resultado = new ArrayList<>();
 
-        
-        
-
-        
         ArrayList<ObjLiquidacion> listaGeneral = almacen.listar();
 
-        
         for (int i = 0; i < listaGeneral.size(); i++) {
             ObjLiquidacion liq = listaGeneral.get(i);
 
-            
             if (liq.getIdentificacion().trim().equals(identificacion)) {
                 resultado.add(liq);
             }
@@ -94,23 +87,23 @@ public class MetodosLiquidaciones {
 
         return resultado;
     }
-    
-    public int buscarLiquidacion(int id){
+
+    public int buscarLiquidacion(int id) {
         int resultado = -1;
-        
+
         ArrayList<ObjLiquidacion> miLiqui = almacen.listar();
-        
+
         //buscamos entre la lsita(recorrer)
         for (int i = 0; i < miLiqui.size(); i++) {
             //condicionamos la bsuqueda
-            if(miLiqui.get(i).getConsecutivo()== id){
-                
+            if (miLiqui.get(i).getConsecutivo() == id) {
+
                 resultado = i;
             }
         }
         return resultado;
     }
-    
+
     //validaciones
     public int validarAlimentacion(String hSalida, String hLlegada, String tipoViatico) {
         String[] parteSalida = hSalida.split(":");
@@ -121,15 +114,13 @@ public class MetodosLiquidaciones {
         int horaLl = Integer.parseInt(parteLlegada[0]);
         int minutosLl = Integer.parseInt(parteLlegada[1]);
 
-        
         int totalMinutosSalida = (horaS * 60) + minutosS;
         int totalMinutosLlegada = (horaLl * 60) + minutosLl;
 
         if (totalMinutosSalida >= totalMinutosLlegada) {
-            return 4; 
+            return 4;
         }
 
-       
         if (tipoViatico.equalsIgnoreCase("Desayuno")) {
             boolean salidaDesayuno = (horaS < 7) || (horaS == 7 && minutosS == 0);
             boolean llegadaDesayuno = (horaLl > 10) || (horaLl == 10 && minutosLl >= 0);
@@ -137,16 +128,14 @@ public class MetodosLiquidaciones {
             if (!(salidaDesayuno && llegadaDesayuno)) {
                 return 1; // No cumple desayuno
             }
-        } 
-        else if (tipoViatico.equalsIgnoreCase("Almuerzo")) {
+        } else if (tipoViatico.equalsIgnoreCase("Almuerzo")) {
             boolean salidaAlmuer = (horaS < 10) || (horaS == 10 && minutosS == 0);
             boolean llegadaALmuer = (horaLl > 14) || (horaLl == 14 && minutosLl >= 0);
 
             if (!(salidaAlmuer && llegadaALmuer)) {
                 return 2; // No cumple almuerzo
             }
-        } 
-        else if (tipoViatico.equalsIgnoreCase("Cena")) {
+        } else if (tipoViatico.equalsIgnoreCase("Cena")) {
             boolean salidaCena = (horaS < 16) || (horaS == 16 && minutosS == 0);
             boolean llegadaCena = (horaLl > 20) || (horaLl == 20 && minutosLl >= 0);
 
@@ -155,6 +144,31 @@ public class MetodosLiquidaciones {
             }
         }
 
-        return 0; 
+        return 0;
+    }
+    //--Filtrar las liquidaciones dentro de un rango de fechas
+
+    public ArrayList<ObjLiquidacion> filtrarPorFechas(Date fechaInicial, Date fechaFinal) {
+        ArrayList<ObjLiquidacion> resultado = new ArrayList<>();
+
+        //--Todas las liquidaciones registradas
+        ArrayList<ObjLiquidacion> listaGeneral = almacen.listar();
+
+        //--Fechas se convierten a número(año-mes-día) para poder compararlas
+        SimpleDateFormat formato = new SimpleDateFormat("yyyyMMdd");
+        int fechaIn = Integer.parseInt(formato.format(fechaInicial));
+        int fechaFin = Integer.parseInt(formato.format(fechaFinal));
+
+        for (int i = 0; i < listaGeneral.size(); i++) {
+            ObjLiquidacion liq = listaGeneral.get(i);
+            int fecha = Integer.parseInt(formato.format(liq.getFechaInicial()));
+
+            //--Si está dentro del rango, se agrega al resultado
+            if (fecha >= fechaIn && fecha <= fechaFin) {
+                resultado.add(liq);
+            }
+        }
+
+        return resultado;
     }
 }
