@@ -7,6 +7,7 @@ package Presentacion;
 import Datos.EstructuraUsuarios;
 import Datos.ObjUsuario;
 import Logica.MetodosUsuarios;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -125,12 +126,13 @@ public class PnlUsuarios extends javax.swing.JPanel {
         lblEstado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblEstado.setText("Estado:");
 
-        cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inactivo", "Activo", " ", " " }));
+        cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inactivo", "Activo" }));
+        cmbEstado.setSelectedIndex(1);
 
         lblRol.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblRol.setText("Rol:");
 
-        cmbRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Normal", " " }));
+        cmbRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Normal" }));
 
         btnGuardar.setBackground(new java.awt.Color(204, 255, 204));
         btnGuardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -253,10 +255,11 @@ public class PnlUsuarios extends javax.swing.JPanel {
                         .addComponent(lblRol)
                         .addComponent(cmbRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12))
@@ -266,7 +269,18 @@ public class PnlUsuarios extends javax.swing.JPanel {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
 
-        int id = Integer.parseInt(txtId.getText());
+        int id = 0;
+        if (txtId.getText().equals("")) {
+            id = misMetodos.siguienteUsuario();
+        } else {
+            try {
+                id = Integer.parseInt(txtId.getText());
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Solo valores númericos", "Error de dato",
+                         JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        }
         String identificacion = txtIdentificacion.getText();
         String nombreCompleto = txtNombre.getText();
         String nomUsuario = txtNomUsr.getText();
@@ -291,13 +305,12 @@ public class PnlUsuarios extends javax.swing.JPanel {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
 
-        if (!txtId.getText().equals("")) {
-            int id = Integer.parseInt(txtId.getText());
+        if (!txtIdentificacion.getText().equals("")) {
+            int indice = misMetodos.buscarIdentificacion(txtIdentificacion.getText());
 
-            ObjUsuario miUsuario = misMetodos.buscarObjUsuario(id);
-
-            if (miUsuario != null) {
-                txtIdentificacion.setText(miUsuario.getIdentificacion());
+            if (indice != -1) {
+                ObjUsuario miUsuario = almacen.listarUsuarios().get(indice);
+                txtId.setText(String.valueOf(miUsuario.getId()));
                 txtNombre.setText(miUsuario.getNombreCompleto());
                 txtNomUsr.setText(miUsuario.getNomUsuario());
                 txtClave.setText(miUsuario.getClave());

@@ -66,4 +66,17 @@ public class MetodosUsuarios {
 
         return resultado;
     }
+
+    public int buscarIdentificacion(String identificacion) { //--Buscar por cédula
+        int resultado = -1; //--Si no encuentra coincidencias
+
+        ArrayList<ObjUsuario> misUsuarios = almacen.listarUsuarios();
+        for (int i = 0; i < misUsuarios.size(); i++) {
+            if (misUsuarios.get(i).getIdentificacion().equals(identificacion)) {
+                resultado = i;
+                break;
+            }
+        }
+        return resultado;
+    }
 }
