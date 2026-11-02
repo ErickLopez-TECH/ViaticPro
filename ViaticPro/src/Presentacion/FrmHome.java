@@ -398,7 +398,7 @@ public class FrmHome extends javax.swing.JFrame {
     private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
         // TODO add your handling code here:
         pnlSubReportes.setVisible(false);
-        mostrarPanel(new PnlUsuarios());
+        mostrarPanel(new PnlUsuarios(usuarioActual));
     }//GEN-LAST:event_btnUsuariosActionPerformed
 
     private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
