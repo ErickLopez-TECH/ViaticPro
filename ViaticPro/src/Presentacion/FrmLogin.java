@@ -173,8 +173,8 @@ public class FrmLogin extends javax.swing.JFrame {
             miUsuario.setId(misMetodos.siguienteUsuario());
             miUsuario.setIdentificacion("3101000001");
             miUsuario.setNombreCompleto("Administrador ViaticPro");
-            miUsuario.setNomUsuario("viaticpro");
-            miUsuario.setClave("viatic123");
+            miUsuario.setNomUsuario("admin");
+            miUsuario.setClave("1234");
             miUsuario.setRol(0);      //-- 0 Administrador
             miUsuario.setEstado(1);   //-- 1 Activo
             almacen.agregarUsuario(miUsuario);

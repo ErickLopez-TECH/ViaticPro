@@ -48,6 +48,19 @@ public class MetodosUsuarios {
         }
         return miUsr;
     }
+    
+    public boolean buscarExistencia(String cedula) { //--Opciòn 2
+        boolean existe = false;
+
+        ArrayList<ObjUsuario> misUsuarios = almacen.listarUsuarios();
+        for (int i = 0; i < misUsuarios.size(); i++) {
+            if (misUsuarios.get(i).getIdentificacion().equals(cedula)) {
+                 existe = true;
+                break;
+            }
+        }
+        return existe;
+    }
 
     public int buscarUsuario(String nomUsr, String clave) { //--Métodos sobrecargados (Overload)
         int resultado = -1; //--Si no encuentra coincidencias

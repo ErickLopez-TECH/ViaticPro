@@ -4,9 +4,13 @@
  */
 package Presentacion;
 
+import Datos.EstructuraBitacora;
 import Datos.EstructuraUsuarios;
+import Datos.ObjBitacora;
 import Datos.ObjUsuario;
+import Logica.MetodosBitacora;
 import Logica.MetodosUsuarios;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,13 +22,23 @@ public class PnlUsuarios extends javax.swing.JPanel {
     /**
      * Creates new form PnlUsuarios
      */
-    public PnlUsuarios() {
+    private ObjUsuario usuarioActual; // usuario que inició sesión (para la bitácora)
+    private String nombreUser;
+    static String seccion = "Usuarios";
+    static String movimiento;
+    
+    public PnlUsuarios(ObjUsuario usuario) {
         initComponents();
-        //tblUsuarios.setModel(almacen.mostrarUsuarios());
+        
+        this.usuarioActual = usuario;
+        this.nombreUser = usuario.getNomUsuario();
+        btnListar.doClick();
     }
     MetodosUsuarios misMetodos = new MetodosUsuarios();
     EstructuraUsuarios almacen = new EstructuraUsuarios();
-
+    MetodosBitacora metodosBita = new MetodosBitacora();
+    EstructuraBitacora almacenBitacora = new EstructuraBitacora();
+    
     //--Método de Limpiar 
     private void limpiar() {
         txtId.setText("");
@@ -32,7 +46,7 @@ public class PnlUsuarios extends javax.swing.JPanel {
         txtNombre.setText("");
         txtNomUsr.setText("");
         txtClave.setText("");
-        cmbEstado.setSelectedIndex(0);
+        cmbEstado.setSelectedIndex(1);
         cmbRol.setSelectedIndex(0);
     }
 
@@ -121,15 +135,33 @@ public class PnlUsuarios extends javax.swing.JPanel {
         lblCedula.setForeground(new java.awt.Color(0, 0, 0));
         lblCedula.setText("Cédula:");
 
+        txtIdentificacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtIdentificacionKeyPressed(evt);
+            }
+        });
+
         lblNombre.setBackground(new java.awt.Color(0, 0, 0));
         lblNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(0, 0, 0));
         lblNombre.setText("Nombre Completo:");
 
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombreKeyPressed(evt);
+            }
+        });
+
         lblNomUsr.setBackground(new java.awt.Color(0, 0, 0));
         lblNomUsr.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNomUsr.setForeground(new java.awt.Color(0, 0, 0));
         lblNomUsr.setText("Usuario:");
+
+        txtNomUsr.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNomUsrKeyPressed(evt);
+            }
+        });
 
         lblClave.setBackground(new java.awt.Color(0, 0, 0));
         lblClave.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -182,6 +214,12 @@ public class PnlUsuarios extends javax.swing.JPanel {
         });
 
         jScrollPane1.setViewportView(tblUsuarios);
+
+        txtClave.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtClaveKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -286,9 +324,33 @@ public class PnlUsuarios extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private boolean validarCampos(){
+        if(txtIdentificacion.getText().equals("")){
+            return false;
+        }
+        
+        if(txtNombre.getText().equals("")){
+            return false;
+        }
+        
+        if(txtNomUsr.getText().equals("")){
+            return false;
+        }
+        
+        if(txtClave.getPassword().equals("")){
+            return false;
+        }
+        
+        return true;
+    }
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
 
+        if(!validarCampos()){
+            JOptionPane.showMessageDialog(this, "No puedes dejar campos vacios","Validacion de campos",JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+       
         int id = 0;
         if (txtId.getText().equals("")) {
             id = misMetodos.siguienteUsuario();
@@ -307,17 +369,37 @@ public class PnlUsuarios extends javax.swing.JPanel {
         String clave = new String(txtClave.getPassword());
         int estado = cmbEstado.getSelectedIndex(); //-- 0 Inactivo 1 Activo
         int rol = cmbRol.getSelectedIndex(); //-- 0 Administrador 1 Normal
+        
+        
 
         ObjUsuario miUsuario = new ObjUsuario(id, identificacion, nombreCompleto,
                 nomUsuario, clave, rol, estado);
         int indice = misMetodos.buscarUsuario(id);
 
         if (indice == -1) {
+            
+                //existencias de cedula
+            boolean existe = misMetodos.buscarExistencia(identificacion);
+            if(existe != false){
+                JOptionPane.showMessageDialog(this, "Esta identificacion ya existe", "Intento de creacion duplicados",
+                            JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            
             miUsuario.setId(misMetodos.siguienteUsuario());
             almacen.agregarUsuario(miUsuario);
+            
+            movimiento = "Agrego";
         } else {
             almacen.editarUsuario(indice, miUsuario);
+            
+            movimiento = "Edito";
         }
+        
+        int idBitacora = metodosBita.siguienteBitacora();
+        
+        ObjBitacora miBitacora = new ObjBitacora(idBitacora, nombreUser, seccion, movimiento);
+        almacenBitacora.agregarBitacora(miBitacora);
         limpiar();
         tblUsuarios.setModel(almacen.mostrarUsuarios());
     }//GEN-LAST:event_btnGuardarActionPerformed
@@ -356,6 +438,13 @@ public class PnlUsuarios extends javax.swing.JPanel {
                 almacen.quitarUsuario(indice);
                 limpiar();
                 btnListar.doClick();
+                
+                movimiento = "Elimino";
+                
+                int idBitacora = metodosBita.siguienteBitacora();
+        
+                ObjBitacora miBitacora = new ObjBitacora(idBitacora, nombreUser, seccion, movimiento);
+                almacenBitacora.agregarBitacora(miBitacora);
             }
 
         }
@@ -370,6 +459,34 @@ public class PnlUsuarios extends javax.swing.JPanel {
         // TODO add your handling code here:
         tblUsuarios.setModel(almacen.mostrarUsuarios());
     }//GEN-LAST:event_formComponentShown
+
+    private void txtIdentificacionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdentificacionKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtNombre.requestFocus();
+        }
+    }//GEN-LAST:event_txtIdentificacionKeyPressed
+
+    private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtNomUsr.requestFocus();
+        }
+    }//GEN-LAST:event_txtNombreKeyPressed
+
+    private void txtNomUsrKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomUsrKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtClave.requestFocus();
+        }
+    }//GEN-LAST:event_txtNomUsrKeyPressed
+
+    private void txtClaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtClaveKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            btnGuardar.doClick();
+        }
+    }//GEN-LAST:event_txtClaveKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
