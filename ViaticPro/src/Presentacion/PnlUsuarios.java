@@ -27,6 +27,7 @@ public class PnlUsuarios extends javax.swing.JPanel {
 
     //--Método de Limpiar 
     private void limpiar() {
+        txtId.setText("");
         txtIdentificacion.setText("");
         txtNombre.setText("");
         txtNomUsr.setText("");
@@ -56,7 +57,6 @@ public class PnlUsuarios extends javax.swing.JPanel {
         lblNomUsr = new javax.swing.JLabel();
         txtNomUsr = new javax.swing.JTextField();
         lblClave = new javax.swing.JLabel();
-        txtClave = new javax.swing.JTextField();
         lblEstado = new javax.swing.JLabel();
         cmbEstado = new javax.swing.JComboBox<>();
         lblRol = new javax.swing.JLabel();
@@ -66,6 +66,7 @@ public class PnlUsuarios extends javax.swing.JPanel {
         btnListar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblUsuarios = new javax.swing.JTable();
+        txtClave = new javax.swing.JPasswordField();
 
         setBackground(new java.awt.Color(204, 255, 229));
         setMinimumSize(new java.awt.Dimension(640, 540));
@@ -101,8 +102,12 @@ public class PnlUsuarios extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        lblId.setBackground(new java.awt.Color(0, 0, 0));
         lblId.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblId.setText("Identificación:");
+        lblId.setForeground(new java.awt.Color(0, 0, 0));
+        lblId.setText("N° Usuario:");
+
+        txtId.setEditable(false);
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.png"))); // NOI18N
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -111,25 +116,37 @@ public class PnlUsuarios extends javax.swing.JPanel {
             }
         });
 
+        lblCedula.setBackground(new java.awt.Color(0, 0, 0));
         lblCedula.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblCedula.setForeground(new java.awt.Color(0, 0, 0));
         lblCedula.setText("Cédula:");
 
+        lblNombre.setBackground(new java.awt.Color(0, 0, 0));
         lblNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(0, 0, 0));
         lblNombre.setText("Nombre Completo:");
 
+        lblNomUsr.setBackground(new java.awt.Color(0, 0, 0));
         lblNomUsr.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblNomUsr.setForeground(new java.awt.Color(0, 0, 0));
         lblNomUsr.setText("Usuario:");
 
+        lblClave.setBackground(new java.awt.Color(0, 0, 0));
         lblClave.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblClave.setForeground(new java.awt.Color(0, 0, 0));
         lblClave.setText("Contraseña:");
 
+        lblEstado.setBackground(new java.awt.Color(0, 0, 0));
         lblEstado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblEstado.setForeground(new java.awt.Color(0, 0, 0));
         lblEstado.setText("Estado:");
 
         cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inactivo", "Activo" }));
         cmbEstado.setSelectedIndex(1);
 
+        lblRol.setBackground(new java.awt.Color(0, 0, 0));
         lblRol.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblRol.setForeground(new java.awt.Color(0, 0, 0));
         lblRol.setText("Rol:");
 
         cmbRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Normal" }));
@@ -174,20 +191,22 @@ public class PnlUsuarios extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNombre)
-                            .addComponent(lblId))
+                        .addComponent(lblNombre)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtId)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblCedula)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtNombre)))
+                        .addComponent(txtNombre)
+                        .addGap(64, 64, 64))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(lblId)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblCedula)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblNomUsr, javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,26 +217,29 @@ public class PnlUsuarios extends javax.swing.JPanel {
                             .addComponent(cmbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblClave)
-                            .addComponent(lblRol))
-                        .addGap(1, 1, 1)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtClave)
-                            .addComponent(cmbRol, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53)
-                        .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)))
-                .addGap(64, 64, 64))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblRol)
+                                .addGap(61, 61, 61))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblClave)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmbRol, 0, 130, Short.MAX_VALUE)
+                            .addComponent(txtClave))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,13 +248,11 @@ public class PnlUsuarios extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblId)
-                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblCedula)
-                                .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblId)
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCedula)
+                            .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(33, 33, 33))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -277,14 +297,14 @@ public class PnlUsuarios extends javax.swing.JPanel {
                 id = Integer.parseInt(txtId.getText());
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(this, "Solo valores númericos", "Error de dato",
-                         JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.INFORMATION_MESSAGE);
             }
 
         }
         String identificacion = txtIdentificacion.getText();
         String nombreCompleto = txtNombre.getText();
         String nomUsuario = txtNomUsr.getText();
-        String clave = txtClave.getText();
+        String clave = new String(txtClave.getPassword());
         int estado = cmbEstado.getSelectedIndex(); //-- 0 Inactivo 1 Activo
         int rol = cmbRol.getSelectedIndex(); //-- 0 Administrador 1 Normal
 
@@ -318,6 +338,9 @@ public class PnlUsuarios extends javax.swing.JPanel {
                 cmbRol.setSelectedIndex(miUsuario.getRol());
 
             }
+        } else {
+            JOptionPane.showMessageDialog(this, "Ingrese una Cédula", "Campo vacío", JOptionPane.INFORMATION_MESSAGE);
+            txtIdentificacion.requestFocus();
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -367,7 +390,7 @@ public class PnlUsuarios extends javax.swing.JPanel {
     private javax.swing.JLabel lblRol;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTable tblUsuarios;
-    private javax.swing.JTextField txtClave;
+    private javax.swing.JPasswordField txtClave;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtIdentificacion;
     private javax.swing.JTextField txtNomUsr;
