@@ -24,7 +24,6 @@ import javax.swing.table.DefaultTableModel;
 public class PnlLiquidacion extends javax.swing.JPanel {
 
     private final EstructuraLiquidacion almacen;
-    private final EstructuraViaticos almacenViatico = new EstructuraViaticos();
     private final EstructuraBitacora almacenBitacora = new EstructuraBitacora();
     private final MetodosLiquidaciones misMetodos = new MetodosLiquidaciones();
     private final MetodosViatico metodosViaticos = new MetodosViatico();
@@ -86,6 +85,8 @@ public class PnlLiquidacion extends javax.swing.JPanel {
         dchInicial.setDate(null);
         dchFinal.setDate(null);
         txtJustificacion.setText("");
+        txtNombreE.setText("");
+        txtNombreViati.setText("");
         limpiarLinea();
         refrescarLineas();
     }
@@ -504,7 +505,7 @@ public class PnlLiquidacion extends javax.swing.JPanel {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
        
-        String name = txtNombreViati.getText() + "-"+txtIdViatico.getText();
+        String name = txtNombreViati.getText();
         String montoTxt = txtMonto.getText().trim().replace(",", ".");
         String error = misMetodos.validarLinea(name, montoTxt);
         
@@ -536,6 +537,9 @@ public class PnlLiquidacion extends javax.swing.JPanel {
                     break;
                 case 4:
                     aviso("La hora de salida no puede ser mayor o igual a la de llegada.");
+                    break;
+                case 5: aviso("Los valores ingresados en horas o minutos superan el limite,"
+                        + "verifique el color rojo de los campos que han sido superado");
                     break;
             }
             return; // Detiene el proceso de guardado
